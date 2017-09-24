@@ -10,6 +10,7 @@
     "bootbot": "^1.0.12",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
+    "config": "~1.26.2",
     "express": "~4.15.2",
     "hbs": "~4.0.1",
     "morgan": "~1.8.1",
