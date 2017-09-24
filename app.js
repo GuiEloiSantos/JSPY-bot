@@ -15,5 +15,5 @@ bot.on('message', (payload, chat) => {
 chat.say(`Echo: ${text}`);
 });
 
-
+bot.start();
 module.exports = app;
