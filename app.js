@@ -1,6 +1,6 @@
 let express = require('express');
-
 let app = express();
+app.set('env', process.env.ENV);
 
 
 const BootBot = require('bootbot');
