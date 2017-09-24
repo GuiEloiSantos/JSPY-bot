@@ -28,7 +28,7 @@ app.use('/users', users);
 
 
 
-/*const BootBot = require('bootbot');
+const BootBot = require('bootbot');
 
 const bot = new BootBot({
     accessToken:  process.env.ACCES_TOKEN,
@@ -39,7 +39,7 @@ bot.on('message', (payload, chat) => {
     const text = payload.message.text;
 chat.say(`Echo: ${text}`);
 });
-*/
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
