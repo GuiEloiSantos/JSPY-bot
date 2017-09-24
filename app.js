@@ -37,14 +37,14 @@ app.get('/webhook', function(req, res) {
     }
 });
 
-const BootBot = require('bootbot');
+/*const BootBot = require('bootbot');
 
 const bot = new BootBot({
     accessToken:  process.env.ACCES_TOKEN,
     verifyToken:  process.env.VERIFY_TOKEN,
     appSecret:  process.env.APP_SECRET
 });
-
+*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
