@@ -1,0 +1,6 @@
+{
+  "ACCESS_TOKEN":"EAAWXRVTfdHwBAFJKrnHQ313fFHKRzrcF0BUieSL8MholU2EykboibHbDNXglThXVv2X1gZB2O1Sc7wdm5dcMtBjdGKoVFYU0YyCIcly0oDkyYfRfN4NkACqZBwmmczor3mnXcsmLbZASm9oBfpkL3idSSyVnwZCWg1HsXpk72gZDZD",
+  "APP_SECRET":"8397aa990919058966cf1049b13957c5",
+  "VERIFY_TOKEN":"784df74df75bda0307b6c878380e6359",
+  "MONGODB_URI":"mongodb://heroku_fj2hzgnc:kmfpb2pei27qtf40a28km564b0@ds141514.mlab.com:41514/heroku_fj2hzgnc"
+}
