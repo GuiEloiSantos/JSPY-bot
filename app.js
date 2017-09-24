@@ -35,6 +35,10 @@ const bot = new BootBot({
     verifyToken:  process.env.VERIFY_TOKEN,
     appSecret:  process.env.APP_SECRET
 });
+bot.on('message', (payload, chat) => {
+    const text = payload.message.text;
+chat.say(`Echo: ${text}`);
+});
 */
 
 // catch 404 and forward to error handler
@@ -46,10 +50,7 @@ app.use(function(req, res, next) {
 
 
 
-bot.on('message', (payload, chat) => {
-    const text = payload.message.text;
-chat.say(`Echo: ${text}`);
-});
+
 
 
 // error handler
