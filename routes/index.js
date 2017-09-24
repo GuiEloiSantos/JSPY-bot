@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-app.get('/webhook', function(req, res) {
+router.get('/webhook', function(req, res) {
     if (req.query['hub.mode'] === 'subscribe' &&
         req.query['hub.verify_token'] === "784df74df75bda0307b6c878380e6359") {
         console.log("Validating webhook");
