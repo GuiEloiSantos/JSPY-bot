@@ -75,7 +75,7 @@ bot.setPersistentMenu([
 ]);
 bot.on('message', (payload, chat) => {
     chat.getUserProfile().then((user) => {
-        chat.say(`Olha ${user.first_name} isso é um pouco vergonhoso mas eu prefiro me ater as opções no menu para não cometer nenhum erro...\n Sabe como é né?\n Aqui estão as opções em que posso te ajudar: `);
+        chat.say(`Olha ${user.first_name} isso é um pouco vergonhoso mas eu prefiro me ater as opções no menu para não cometer nenhum erro...\nSabe como é né?\nAqui estão as opções em que posso te ajudar: `);
         chat.sendListTemplate([
                 {
                     title: "Nosso novo menu está cada dia mais cativante",
@@ -86,11 +86,6 @@ bot.on('message', (payload, chat) => {
                             title: 'Entradas',
                             type: 'postback',
                             payload: 'FIRST'
-                        },
-                        {
-                            title: 'Prato Principal',
-                            type: 'postback',
-                            payload: 'MAIN'
                         }
                     ]
                 },
@@ -103,11 +98,6 @@ bot.on('message', (payload, chat) => {
                             title: 'Sem Álcool',
                             type: 'postback',
                             payload: 'N_ALC'
-                        },
-                        {
-                            title: 'Alcoólicas',
-                            type: 'postback',
-                            payload: 'ALC'
                         }
                     ]
                 },
@@ -120,11 +110,6 @@ bot.on('message', (payload, chat) => {
                             title: 'Fazer reserva',
                             type: 'postback',
                             payload: 'BOOKING'
-                        },
-                        {
-                            title: 'Deixar Feedback',
-                            type: 'postback',
-                            payload: 'FEEDBACK'
                         }
                     ]
                 }
