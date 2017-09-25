@@ -75,11 +75,11 @@ bot.setPersistentMenu([
 ]);
 bot.on('message', (payload, chat) => {
     chat.getUserProfile().then((user) => {
-        chat.say(`Olha ${user.first_name} isso é um pouco vergonhoso mas eu prefiro me ater as opções no menu para não cometer nenhum erro: `);
+        chat.say(`Olha ${user.first_name} isso é um pouco vergonhoso mas eu prefiro me ater as opções no menu para não cometer nenhum erro...\n Sabe como é né?\n Aqui estão as opções em que posso te ajudar: `);
         chat.sendListTemplate([
                 {
                     title: "Nosso novo menu está cada dia mais cativante",
-                    subtitle: "São diversas opcões para qualquer tipo de gosto e horário, tudo feito com muita tecnica, conhecimento e acima de tudo amor!",
+                    subtitle: "São diversas opções, tudo feito com muita tecnica, conhecimento e acima de tudo amor!",
                     image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/19985152_154583508443911_7143972438064234496_n.jpg",
                     buttons: [
                         {
