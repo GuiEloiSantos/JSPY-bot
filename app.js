@@ -76,7 +76,7 @@ bot.setPersistentMenu([
 bot.on('message', (payload, chat) => {
     chat.getUserProfile().then((user) => {
         chat.say(`Olha ${user.first_name} isso é um pouco vergonhoso mas eu prefiro me ater as opções no menu para não cometer nenhum erro...\nSabe como é né?\nAqui estão as opções em que posso te ajudar: `);
-        chat.sendListTemplate([
+        chat.sendGenericTemplate([
                 {
                     title: "Nosso novo menu está cada dia mais cativante",
                     subtitle: "São diversas opções, tudo feito com muita tecnica, conhecimento e acima de tudo amor!",
@@ -86,6 +86,16 @@ bot.on('message', (payload, chat) => {
                             title: 'Entradas',
                             type: 'postback',
                             payload: 'FIRST'
+                        },
+                        {
+                            title: 'Prato Principal',
+                            type: 'postback',
+                            payload: 'MAIN'
+                        },
+                        {
+                            title: 'Sobremesa',
+                            type: 'postback',
+                            payload: 'DESERT'
                         }
                     ]
                 },
@@ -98,6 +108,16 @@ bot.on('message', (payload, chat) => {
                             title: 'Sem Álcool',
                             type: 'postback',
                             payload: 'N_ALC'
+                        },
+                        {
+                            title: 'Alcoólicas',
+                            type: 'postback',
+                            payload: 'ALC'
+                        },
+                        {
+                            title: 'Vinhos',
+                            type: 'postback',
+                            payload: 'WINE'
                         }
                     ]
                 },
@@ -110,6 +130,16 @@ bot.on('message', (payload, chat) => {
                             title: 'Fazer reserva',
                             type: 'postback',
                             payload: 'BOOKING'
+                        },
+                        {
+                            title: 'Deixar Feedback',
+                            type: 'postback',
+                            payload: 'FEEDBACK'
+                        },
+                        {
+                            title: 'Promoções',
+                            type: 'postback',
+                            payload: 'Promoções'
                         }
                     ]
                 }
