@@ -78,21 +78,21 @@ bot.on('message', (payload, chat) => {
         chat.say(`Oi, ${user.first_name}. Será um prazer atender você! Aqui está as opções em que posso te ajudar:`);
         chat.sendListTemplate([
                 {
-                    title: "Classic T-Shirt Collection",
-                    subtitle: "See all our colors",
-                    image_url: "https://calm-castle-79707.herokuapp.com/",
+                    title: "Vem ká neloni!",
+                    subtitle: "Caneloni de cebola queijo canastra e mel!",
+                    image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/21149085_1934382686850805_7055726545351999488_n.jpg",
                     buttons: [
                         {
-                            title: 'Entradas',
+                            title: 'Mais detalhes',
                             type: 'postback',
-                            payload: 'FIRST'
+                            payload: 'CCQCM_DETAILS'
                         }
                     ]
                 },
                 {
-                    title: "Classic T-Shirt Collection",
-                    subtitle: "See all our colors",
-                    image_url: "https://calm-castle-79707.herokuapp.com/",
+                    title: "Carbonara da Roça",
+                    subtitle: "Massa de corte rústico, creme de milho com gema caipira e queijo Tulia de Amparo, barriga de porco e mini legumes.",
+                    image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/20905682_128547464437893_2480580150173892608_n.jpg",
                     buttons: [
                         {
                             title: 'Entradas',
