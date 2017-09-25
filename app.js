@@ -129,6 +129,11 @@ bot.on('postback:START', (payload, chat) => {
                     webview_height_ratio: "tall",
                     fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                 }]
+            ).then((result, err) =>
+            {
+                console.log(result);
+                console.log(err);
+            }
             );
             //chat.say(`Oi, ${user.first_name}. Será um prazer atender você! Aqui está as opções em que posso te ajudar:`);
         });
