@@ -78,8 +78,8 @@ bot.on('message', (payload, chat) => {
         chat.say(`Oi, ${user.first_name}. Será um prazer atender você! Aqui está as opções em que posso te ajudar:`);
         chat.sendGenericTemplate([
                 {
-                    title: "Vem ká neloni!",
-                    subtitle: "Caneloni de cebola queijo canastra e mel!",
+                    title: "Vem ká neloni",
+                    subtitle: "Caneloni de cebola queijo canastra e mel! \n Preço: R$ 59.00",
                     image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/21149085_1934382686850805_7055726545351999488_n.jpg",
                     buttons: [
                         {
@@ -90,14 +90,14 @@ bot.on('message', (payload, chat) => {
                     ]
                 },
                 {
-                    title: "Carbonara da Roça",
-                    subtitle: "Massa de corte rústico, creme de milho com gema caipira e queijo Tulia de Amparo, barriga de porco e mini legumes.",
+                    title: "Carbonara da Roça - R$ 59",
+                    subtitle: "Massa de corte rústico, creme de milho com gema caipira e queijo Tulia de Amparo, barriga de porco e mini legumes. \n Preço: R$ 59.00",
                     image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/20905682_128547464437893_2480580150173892608_n.jpg",
                     buttons: [
                         {
-                            title: 'Entradas',
+                            title: 'Mais detalhes',
                             type: 'postback',
-                            payload: 'FIRST'
+                            payload: 'CDR_DETAILS'
                         }
                     ]
                 }
