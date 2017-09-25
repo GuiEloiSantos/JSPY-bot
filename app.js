@@ -91,11 +91,6 @@ bot.on('message', (payload, chat) => {
                             title: 'Prato Principal',
                             type: 'postback',
                             payload: 'MAIN'
-                        },
-                        {
-                            title: 'Sobremesa',
-                            type: 'postback',
-                            payload: 'DESERT'
                         }
                     ]
                 },
@@ -113,11 +108,6 @@ bot.on('message', (payload, chat) => {
                             title: 'Alcoólicas',
                             type: 'postback',
                             payload: 'ALC'
-                        },
-                        {
-                            title: 'Vinhos',
-                            type: 'postback',
-                            payload: 'WINE'
                         }
                     ]
                 },
@@ -135,11 +125,6 @@ bot.on('message', (payload, chat) => {
                             title: 'Deixar Feedback',
                             type: 'postback',
                             payload: 'FEEDBACK'
-                        },
-                        {
-                            title: 'Promoções',
-                            type: 'postback',
-                            payload: 'Promoções'
                         }
                     ]
                 }
