@@ -7,7 +7,7 @@ const bot = new BootBot({
 });
 
 bot.setGreetingText("Olá, precisa de mais informações sobre pratos e o Mon Del? Tenho todo o Menu com fotos e detalhes, assim como promoções exclusivas, quer dar uma olhada?");
-bot.setGetStartedButton("Eu adoraria!");
+bot.setGetStartedButton({title:"Eu adoraria!", type:"postback", payload:"START"});
 bot.setPersistentMenu([
     {
         title: 'Ver Pratos',
@@ -77,5 +77,4 @@ bot.on('message', (payload, chat) => {
     const text = payload.message.text;
     chat.say(`Echo: ${text}`);
 });
-console.log(process.env);
 bot.start(process.env.PORT || 80);
