@@ -26,7 +26,7 @@ bot.setPersistentMenu([
             {
                 title: 'Sobremesa',
                 type: 'postback',
-                payload: 'DESERT'
+                payload: 'DESSERT'
             }
         ]
     },
@@ -95,7 +95,7 @@ bot.on('message', (payload, chat) => {
                         {
                             title: 'Sobremesa',
                             type: 'postback',
-                            payload: 'DESERT'
+                            payload: 'DESSERT'
                         }
                     ]
                 },
@@ -174,7 +174,7 @@ bot.on('postback:START', (payload, chat) => {
                             {
                                 title: 'Sobremesa',
                                 type: 'postback',
-                                payload: 'DESERT'
+                                payload: 'DESSERT'
                             }
                         ]
                     },
@@ -224,20 +224,74 @@ bot.on('postback:START', (payload, chat) => {
                     }
                 ],
                 []
-            ).then((result, err) => {
+            ).then((result) => {
                     console.log(result);
-                    console.log(err);
                 }
             );
         });
-    }
-);
-
+    });
+bot.on('postback:FIRST', (payload, chat) => {
+    chat.sendGenericTemplate([
+            {
+                title: "Harumake",
+                subtitle: "Harumake de carne de panela com chantilly de wasabi!\nPreço: R$ 49.00",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/21690669_745706748887433_195117319125467136_n.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'HRK_DETAILS'
+                    }
+                ]
+            },
+            {
+                title: "Desvio",
+                subtitle: "Desvio para o Laranja ou a Trilogia da Abóbora!\nPreço: R$ 59.00",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/21479645_1437810829638058_2757980882252857344_n.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'DSV_DETAILS'
+                    }
+                ]
+            },
+            {
+                title: "Bahianada",
+                subtitle: "Dadinhos de tapioca, banana, camarão e molho de moqueca!\nPreço: R$ 69.00",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/21827056_117635038948942_7639582363755741184_n.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'BHA_DETAILS'
+                    }
+                ]
+            },
+            {
+                title: "Bolinho de Corda",
+                subtitle: "Cordeiro, chutney de manga, coalhada seca e molho ccc!\nPreço: R$ 79.00",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/21827056_117635038948942_7639582363755741184_n.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'BDC_DETAILS'
+                    }
+                ]
+            }
+        ],
+        []
+    ).then((result) => {
+            console.log(result);
+        }
+    );
+});
 bot.on('postback:MAIN', (payload, chat) => {
     chat.sendGenericTemplate([
             {
                 title: "Vem ká neloni",
-                subtitle: "Caneloni de cebola queijo canastra e mel! \n Preço: R$ 59.00",
+                subtitle: "Caneloni de cebola queijo canastra e mel!\nPreço: R$ 59.00",
                 image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/21149085_1934382686850805_7055726545351999488_n.jpg",
                 buttons: [
                     {
@@ -249,7 +303,7 @@ bot.on('postback:MAIN', (payload, chat) => {
             },
             {
                 title: "Carbonara da Roça",
-                subtitle: "Massa de corte rústico, queijo Tulia de Amparo... \n Preço: R$ 59.00",
+                subtitle: "Massa de corte rústico, queijo Tulia de Amparo...\nPreço: R$ 59.00",
                 image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/20905682_128547464437893_2480580150173892608_n.jpg",
                 buttons: [
                     {
@@ -258,13 +312,95 @@ bot.on('postback:MAIN', (payload, chat) => {
                         payload: 'CDR_DETAILS'
                     }
                 ]
+            },
+            {
+                title: "Leitada",
+                subtitle: "Leitoa desossada e prensada, pele crocante, risoto de ...\nPreço: R$ 79.00",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/21827056_117635038948942_7639582363755741184_n.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'LTD_DETAILS'
+                    }
+                ]
+            },
+            {
+                title: "Pinlinguá",
+                subtitle: "Língua com pinhão molho ccc (chouriço, cacau e cafe)...\nPreço: R$ 79.00",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/21224515_270570296768338_8947954621888856064_n.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'PLG_DETAILS'
+                    }
+                ]
             }
         ],
         []
-    ).then((result, err) => {
+    ).then((result) => {
             console.log(result);
-            console.log(err);
         }
     );
 });
+bot.on('postback:DESSERT', (payload, chat) => {
+    chat.sendGenericTemplate([
+            {
+                title: "Cheesecake ",
+                subtitle: "Cheesecake de doce de leite brûlé com massa de paçoquinha...\nPreço: R$ 39.00",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/21107641_1448030321910814_1423470866200526848_n.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'CKK_DETAILS'
+                    }
+                ]
+            },
+            {
+                title: "Torta de Chocolate",
+                subtitle: "Torta de chocolate com caramelo Salgado e sorvete de amora!\nPreço: R$ 39.00",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/17932557_1919376308294906_2302619511703994368_n.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'TDC_DETAILS'
+                    }
+                ]
+            },
+            {
+                title: "Tiramisu",
+                subtitle: "Tiramisu, doce da culinaria italiana, traduzido por 'me levante para cima'\nPreço: R$ 39.00",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/17494432_183179958864444_3178434369232568320_n.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'TMS_DETAILS'
+                    }
+                ]
+            },
+            {
+                title: "Rabanada",
+                subtitle: "Rabanada com creme inglês geladinho e coulis de frutas vermelhas!\nPreço: R$ 79.00",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/14719548_1026246167474128_1553071311083798528_n.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'RBN_DETAILS'
+                    }
+                ]
+            }
+        ],
+        []
+    ).then((result) => {
+            console.log(result);
+        }
+    );
+});
+
+
 bot.start(process.env.PORT || 80);
