@@ -91,6 +91,21 @@ bot.on('message', (payload, chat) => {
                             fallback_url: ""
                         }
                     ]
+                },
+                {
+                    title: "Classic T-Shirt Collection",
+                    subtitle: "See all our colors",
+                    image_url: "",
+                    buttons: [
+                        {
+                            title: "View",
+                            type: "web_url",
+                            url: "",
+                            messenger_extensions: true,
+                            webview_height_ratio: "tall",
+                            fallback_url: ""
+                        }
+                    ]
                 }
             ],
             [{
