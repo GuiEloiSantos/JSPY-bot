@@ -88,7 +88,7 @@ bot.on('message', (payload, chat) => {
                             url: "https://peterssendreceiveapp.ngrok.io/collection",
                             messenger_extensions: true,
                             webview_height_ratio: "tall",
-                            fallback_url: "https://peterssendreceiveapp.ngrok.io/"
+                            fallback_url: "https://calm-castle-79707.herokuapp.com/"
                         }
                     ]
                 },
@@ -100,7 +100,7 @@ bot.on('message', (payload, chat) => {
                         url: "https://peterssendreceiveapp.ngrok.io/view?item=100",
                         messenger_extensions: true,
                         webview_height_ratio: "tall",
-                        fallback_url: "https://peterssendreceiveapp.ngrok.io/"
+                        fallback_url: "https://calm-castle-79707.herokuapp.com/"
                     }
                 },
                 {
@@ -112,7 +112,7 @@ bot.on('message', (payload, chat) => {
                         url: "https://peterssendreceiveapp.ngrok.io/view?item=101",
                         messenger_extensions: true,
                         webview_height_ratio: "tall",
-                        fallback_url: "https://peterssendreceiveapp.ngrok.io/"
+                        fallback_url: "https://calm-castle-79707.herokuapp.com/"
                     },
 
                 }
@@ -123,7 +123,7 @@ bot.on('message', (payload, chat) => {
                 url: "https://peterssendreceiveapp.ngrok.io/shop?item=101",
                 messenger_extensions: true,
                 webview_height_ratio: "tall",
-                fallback_url: "https://peterssendreceiveapp.ngrok.io/"
+                fallback_url: "https://calm-castle-79707.herokuapp.com/"
             }]
         ).then((result) => {
                 console.log(result);
@@ -146,7 +146,7 @@ bot.on('postback:START', (payload, chat) => {
                                 url: "https://peterssendreceiveapp.ngrok.io/collection",
                                 messenger_extensions: true,
                                 webview_height_ratio: "tall",
-                                fallback_url: "https://peterssendreceiveapp.ngrok.io/"
+                                fallback_url: "https://calm-castle-79707.herokuapp.com/"
                             }
                         ]
                     },
@@ -158,7 +158,7 @@ bot.on('postback:START', (payload, chat) => {
                             url: "https://peterssendreceiveapp.ngrok.io/view?item=100",
                             messenger_extensions: true,
                             webview_height_ratio: "tall",
-                            fallback_url: "https://peterssendreceiveapp.ngrok.io/"
+                            fallback_url: "https://calm-castle-79707.herokuapp.com/"
                         }
                     },
                     {
@@ -170,7 +170,7 @@ bot.on('postback:START', (payload, chat) => {
                             url: "https://peterssendreceiveapp.ngrok.io/view?item=101",
                             messenger_extensions: true,
                             webview_height_ratio: "tall",
-                            fallback_url: "https://peterssendreceiveapp.ngrok.io/"
+                            fallback_url: "https://calm-castle-79707.herokuapp.com/"
                         },
 
                     }
@@ -181,7 +181,7 @@ bot.on('postback:START', (payload, chat) => {
                     url: "https://peterssendreceiveapp.ngrok.io/shop?item=101",
                     messenger_extensions: true,
                     webview_height_ratio: "tall",
-                    fallback_url: "https://peterssendreceiveapp.ngrok.io/"
+                    fallback_url: "https://calm-castle-79707.herokuapp.com/"
                 }]
             ).then((result, err) => {
                     console.log(result);
