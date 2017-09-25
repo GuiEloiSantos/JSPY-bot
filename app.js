@@ -76,8 +76,55 @@ bot.setPersistentMenu([
 bot.on('message', (payload, chat) => {
     chat.getUserProfile().then((user) => {
         chat.say(`Oi, ${user.first_name}. Será um prazer atender você! Aqui está as opções em que posso te ajudar:`);
-        chat.sendListTemplate([],
-            []
+        chat.sendListTemplate([
+                {
+                    title: "Classic T-Shirt Collection",
+                    subtitle: "See all our colors",
+                    image_url: "http://peterssendreceiveapp.ngrok.io/img/collection.png",
+                    buttons: [
+                        {
+                            title: "View",
+                            type: "web_url",
+                            url: "http://peterssendreceiveapp.ngrok.io/collection",
+                            messenger_extensions: true,
+                            webview_height_ratio: "tall",
+                            fallback_url: "http://calm-castle-79707.herokuapp.com/"
+                        }
+                    ]
+                },
+                {
+                    title: "Classic White T-Shirt",
+                    subtitle: "See all our colors",
+                    default_action: {
+                        type: "web_url",
+                        url: "http://peterssendreceiveapp.ngrok.io/view?item=100",
+                        messenger_extensions: true,
+                        webview_height_ratio: "tall",
+                        fallback_url: "http://calm-castle-79707.herokuapp.com/"
+                    }
+                },
+                {
+                    title: "Classic Blue T-Shirt",
+                    image_url: "http://peterssendreceiveapp.ngrok.io/img/blue-t-shirt.png",
+                    subtitle: "100% Cotton, 200% Comfortable",
+                    default_action: {
+                        type: "web_url",
+                        url: "http://peterssendreceiveapp.ngrok.io/view?item=101",
+                        messenger_extensions: true,
+                        webview_height_ratio: "tall",
+                        fallback_url: "http://calm-castle-79707.herokuapp.com/"
+                    },
+
+                }
+            ],
+            [{
+                title: "Shop Now",
+                type: "web_url",
+                url: "http://peterssendreceiveapp.ngrok.io/shop?item=101",
+                messenger_extensions: true,
+                webview_height_ratio: "tall",
+                fallback_url: "http://calm-castle-79707.herokuapp.com/"
+            }]
         ).then((result) => {
                 console.log(result);
             }
