@@ -6,7 +6,7 @@ const bot = new BootBot({
     appSecret: process.env.APP_SECRET
 });
 
-bot.setGreetingText("Olá meu nome é Mate, precisa de mais informações sobre pratos e o Mon Del? Tenho todo o Menu com fotos e detalhes, assim como promoções exclusivas, quer dar uma olhada?");
+bot.setGreetingText("Olá meu nome é Mate, precisa de mais informações sobre pratos e o Mon Del?");
 bot.setGetStartedButton("START");
 bot.setPersistentMenu([
     {
