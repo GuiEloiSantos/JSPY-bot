@@ -130,7 +130,7 @@ bot.on('postback:START', (payload, chat) => {
                     fallback_url: "https://peterssendreceiveapp.ngrok.io/"
                 }]
             );
-            chat.say(`Oi, ${user.first_name}. Será um prazer atender você! Aqui está as opções em que posso te ajudar:`);
+            //chat.say(`Oi, ${user.first_name}. Será um prazer atender você! Aqui está as opções em que posso te ajudar:`);
         });
     }
 );
