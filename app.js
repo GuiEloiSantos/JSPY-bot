@@ -1,8 +1,3 @@
-let express = require('express');
-let app = express();
-let config = require('config');
-
-
 const BootBot = require('bootbot');
 
 const bot = new BootBot({
@@ -15,5 +10,5 @@ bot.on('message', (payload, chat) => {
     chat.say(`Echo: ${text}`);
 });
 
-bot.start(80);
+bot.start();
 module.exports = app;
