@@ -83,12 +83,9 @@ bot.on('message', (payload, chat) => {
                     image_url: "https://calm-castle-79707.herokuapp.com/",
                     buttons: [
                         {
-                            title: "View",
-                            type: "web_url",
-                            url: "https://calm-castle-79707.herokuapp.com/",
-                            messenger_extensions: true,
-                            webview_height_ratio: "tall",
-                            fallback_url: "https://calm-castle-79707.herokuapp.com/"
+                            title: 'Entradas',
+                            type: 'postback',
+                            payload: 'FIRST'
                         }
                     ]
                 },
@@ -98,24 +95,14 @@ bot.on('message', (payload, chat) => {
                     image_url: "https://calm-castle-79707.herokuapp.com/",
                     buttons: [
                         {
-                            title: "View",
-                            type: "web_url",
-                            url: "https://calm-castle-79707.herokuapp.com/",
-                            messenger_extensions: true,
-                            webview_height_ratio: "tall",
-                            fallback_url: "https://calm-castle-79707.herokuapp.com/"
+                            title: 'Entradas',
+                            type: 'postback',
+                            payload: 'FIRST'
                         }
                     ]
                 }
             ],
-            [{
-                title: "Shop Now",
-                type: "web_url",
-                url: "https://calm-castle-79707.herokuapp.com/",
-                messenger_extensions: true,
-                webview_height_ratio: "tall",
-                fallback_url: "https://calm-castle-79707.herokuapp.com/"
-            }]
+            []
         ).then((result, err) => {
                 console.log(result);
                 console.log(err);
