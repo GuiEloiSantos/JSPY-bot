@@ -79,7 +79,7 @@ bot.on('message', (payload, chat) => {
         chat.sendGenericTemplate([
                 {
                     title: "Nosso novo menu está cada dia mais cativante",
-                    subtitle: "São diversas opções, tudo feito com muita tecnica, conhecimento e acima de tudo amor!",
+                    subtitle: "São diversas opções, tudo feito com muita tecnica e acima de tudo amor!",
                     image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/19985152_154583508443911_7143972438064234496_n.jpg",
                     buttons: [
                         {
@@ -158,7 +158,7 @@ bot.on('postback:START', (payload, chat) => {
             chat.sendListTemplate([
                     {
                         title: "Nosso novo menu está cada dia mais cativante",
-                        subtitle: "São diversas opcões para qualquer tipo de gosto e horário, tudo feito com muita tecnica, conhecimento e acima de tudo amor!",
+                        subtitle: "São diversas opções, tudo feito com muita tecnica e acima de tudo amor!",
                         image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/19985152_154583508443911_7143972438064234496_n.jpg",
                         buttons: [
                             {
@@ -372,7 +372,7 @@ bot.on('postback:DESSERT', (payload, chat) => {
             },
             {
                 title: "Tiramisu",
-                subtitle: "Tiramisu, doce da culinaria italiana, traduzido por 'me levante para cima'\nPreço: R$ 39.00",
+                subtitle: "Tiramisu, traduzido por 'me levante para cima'\nPreço: R$ 39.00",
                 image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/17494432_183179958864444_3178434369232568320_n.jpg",
                 buttons: [
                     {
@@ -384,7 +384,7 @@ bot.on('postback:DESSERT', (payload, chat) => {
             },
             {
                 title: "Rabanada",
-                subtitle: "Rabanada com creme inglês geladinho e coulis de frutas vermelhas!\nPreço: R$ 79.00",
+                subtitle: "Rabanada com creme inglês geladinho e coulis de frutas vermelhas!\nPreço: R$ 39.00",
                 image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/14719548_1026246167474128_1553071311083798528_n.jpg",
                 buttons: [
                     {
