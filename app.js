@@ -9,5 +9,5 @@ bot.on('message', (payload, chat) => {
     const text = payload.message.text;
     chat.say(`Echo: ${text}`);
 });
-
+console.log(process.env);
 bot.start(process.env.PORT||80);
