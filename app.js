@@ -75,6 +75,7 @@ bot.setPersistentMenu([
 ], true);
 bot.on('message', (payload, chat) => {
     const text = payload.message.text;
+    console.log(payload);
     chat.say(`Echo: ${text}`);
 });
 bot.start(process.env.PORT || 80);
