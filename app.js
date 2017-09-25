@@ -10,4 +10,4 @@ bot.on('message', (payload, chat) => {
     chat.say(`Echo: ${text}`);
 });
 
-bot.start(80);
+bot.start(process.env.PORT||80);
