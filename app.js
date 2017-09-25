@@ -80,30 +80,30 @@ bot.on('message', (payload, chat) => {
                 {
                     title: "Classic T-Shirt Collection",
                     subtitle: "See all our colors",
-                    image_url: "",
+                    image_url: "https://calm-castle-79707.herokuapp.com/",
                     buttons: [
                         {
                             title: "View",
                             type: "web_url",
-                            url: "",
+                            url: "https://calm-castle-79707.herokuapp.com/",
                             messenger_extensions: true,
                             webview_height_ratio: "tall",
-                            fallback_url: ""
+                            fallback_url: "https://calm-castle-79707.herokuapp.com/"
                         }
                     ]
                 },
                 {
                     title: "Classic T-Shirt Collection",
                     subtitle: "See all our colors",
-                    image_url: "",
+                    image_url: "https://calm-castle-79707.herokuapp.com/",
                     buttons: [
                         {
                             title: "View",
                             type: "web_url",
-                            url: "",
+                            url: "https://calm-castle-79707.herokuapp.com/",
                             messenger_extensions: true,
                             webview_height_ratio: "tall",
-                            fallback_url: ""
+                            fallback_url: "https://calm-castle-79707.herokuapp.com/"
                         }
                     ]
                 }
@@ -111,7 +111,7 @@ bot.on('message', (payload, chat) => {
             [{
                 title: "Shop Now",
                 type: "web_url",
-                url: "",
+                url: "https://calm-castle-79707.herokuapp.com/",
                 messenger_extensions: true,
                 webview_height_ratio: "tall",
                 fallback_url: "https://calm-castle-79707.herokuapp.com/"
