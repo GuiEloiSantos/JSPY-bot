@@ -76,55 +76,8 @@ bot.setPersistentMenu([
 bot.on('message', (payload, chat) => {
     chat.getUserProfile().then((user) => {
         chat.say(`Oi, ${user.first_name}. Será um prazer atender você! Aqui está as opções em que posso te ajudar:`);
-        chat.sendListTemplate([
-                {
-                    title: "Classic T-Shirt Collection",
-                    subtitle: "See all our colors",
-                    image_url: "https://calm-castle-79707.herokuapp.com/",
-                    buttons: [
-                        {
-                            title: "View",
-                            type: "web_url",
-                            url: "https://calm-castle-79707.herokuapp.com/",
-                            messenger_extensions: true,
-                            webview_height_ratio: "tall",
-                            fallback_url: "https://calm-castle-79707.herokuapp.com/"
-                        }
-                    ]
-                },
-                {
-                    title: "Classic White T-Shirt",
-                    subtitle: "See all our colors",
-                    default_action: {
-                        type: "web_url",
-                        url: "https://calm-castle-79707.herokuapp.com/",
-                        messenger_extensions: true,
-                        webview_height_ratio: "tall",
-                        fallback_url: "https://calm-castle-79707.herokuapp.com/"
-                    }
-                },
-                {
-                    title: "Classic Blue T-Shirt",
-                    image_url: "https://calm-castle-79707.herokuapp.com/",
-                    subtitle: "100% Cotton, 200% Comfortable",
-                    default_action: {
-                        type: "web_url",
-                        url: "https://calm-castle-79707.herokuapp.com/",
-                        messenger_extensions: true,
-                        webview_height_ratio: "tall",
-                        fallback_url: "https://calm-castle-79707.herokuapp.com/"
-                    },
-
-                }
-            ],
-            [{
-                title: "Shop Now",
-                type: "web_url",
-                url: "https://calm-castle-79707.herokuapp.com/",
-                messenger_extensions: true,
-                webview_height_ratio: "tall",
-                fallback_url: "https://calm-castle-79707.herokuapp.com/"
-            }]
+        chat.sendListTemplate([],
+            []
         ).then((result) => {
                 console.log(result);
             }
