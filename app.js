@@ -11,4 +11,3 @@ bot.on('message', (payload, chat) => {
 });
 
 bot.start();
-module.exports = app;
