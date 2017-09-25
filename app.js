@@ -76,7 +76,7 @@ bot.setPersistentMenu([
 bot.on('message', (payload, chat) => {
     chat.getUserProfile().then((user) => {
         chat.say(`Oi, ${user.first_name}. Será um prazer atender você! Aqui está as opções em que posso te ajudar:`);
-        chat.sendListTemplate([
+        chat.sendGenericTemplate([
                 {
                     title: "Vem ká neloni!",
                     subtitle: "Caneloni de cebola queijo canastra e mel!",
