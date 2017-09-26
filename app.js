@@ -1,3 +1,19 @@
+let express = require('express');
+let bodyParser = require('body-parser');
+let path = require('path');
+let app = express();
+let router = require('./router/router');
+let hbs = require('hbs');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+app.set('env', process.env.ENV || 'development');
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.use('/web', router);
+
 const BootBot = require('bootbot');
 const quickReplyFeedback = ['Ruim', 'Médio', 'Bom'];
 const bot = new BootBot({
