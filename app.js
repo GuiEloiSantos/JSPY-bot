@@ -695,6 +695,6 @@ function matchPattern(answer) {
     return true; //(weekdays.indexOf(test[0]) !== -1 && test[1] === "dia" && !isNaN((test[2])) && (test[3] === 'de') && month.indexOf(test[4]) !== -1);
 }
 
-app.listen(30000, function () {
+app.listen(3000, function () {
     console.log('Web working...');
 });
