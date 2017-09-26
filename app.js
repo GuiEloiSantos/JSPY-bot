@@ -74,162 +74,11 @@ bot.setPersistentMenu([
     }
 ]);
 bot.on('message', (payload, chat) => {
-    chat.getUserProfile().then((user) => {
-        chat.say(`Olha ${user.first_name} isso é um pouco vergonhoso mas eu prefiro me ater as opções no menu para não cometer nenhum erro...\nSabe como é né?\nAqui estão as opções em que posso te ajudar: `);
-        chat.sendGenericTemplate([
-                {
-                    title: "Nosso novo menu está cada dia mais cativante",
-                    subtitle: "São diversas opções, tudo feito com muita tecnica e acima de tudo amor!",
-                    image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/19985152_154583508443911_7143972438064234496_n.jpg",
-                    buttons: [
-                        {
-                            title: 'Entradas',
-                            type: 'postback',
-                            payload: 'FIRST'
-                        },
-                        {
-                            title: 'Prato Principal',
-                            type: 'postback',
-                            payload: 'MAIN'
-                        },
-                        {
-                            title: 'Sobremesa',
-                            type: 'postback',
-                            payload: 'DESSERT'
-                        }
-                    ]
-                },
-                {
-                    title: "Menu de Bebidas",
-                    subtitle: "Do tradicional ao inovador e exclusivo, confira a nossas opções de bebidas!",
-                    image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/20968599_1413818518731403_2371003499954569216_n.jpg",
-                    buttons: [
-                        {
-                            title: 'Sem Álcool',
-                            type: 'postback',
-                            payload: 'N_ALC'
-                        },
-                        {
-                            title: 'Alcoólicas',
-                            type: 'postback',
-                            payload: 'ALC'
-                        },
-                        {
-                            title: 'Vinhos',
-                            type: 'postback',
-                            payload: 'WINE'
-                        }
-                    ]
-                },
-                {
-                    title: "Outras opcões",
-                    subtitle: "Faca sua reserva, deixe um feedback ou veja nossas promoções!",
-                    image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/18380940_1419359341457985_5632516340716666880_n.jpg",
-                    buttons: [
-                        {
-                            title: 'Fazer reserva',
-                            type: 'postback',
-                            payload: 'BOOKING'
-                        },
-                        {
-                            title: 'Deixar Feedback',
-                            type: 'postback',
-                            payload: 'FEEDBACK'
-                        },
-                        {
-                            title: 'Promoções',
-                            type: 'postback',
-                            payload: 'Promoções'
-                        }
-                    ]
-                }
-            ],
-            []
-        ).then((result, err) => {
-                console.log(result);
-                console.log(err);
-            }
-        );
-    });
+    defaultMessage(payload, chat);
 });
 bot.on('postback:START', (payload, chat) => {
-        chat.getUserProfile().then((user) => {
-            chat.say(`Oi, ${user.first_name}. Será um prazer atender você! Aqui está as opções em que posso te ajudar:`);
-            chat.sendListTemplate([
-                    {
-                        title: "Nosso novo menu está cada dia mais cativante",
-                        subtitle: "São diversas opções, tudo feito com muita tecnica e acima de tudo amor!",
-                        image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/19985152_154583508443911_7143972438064234496_n.jpg",
-                        buttons: [
-                            {
-                                title: 'Entradas',
-                                type: 'postback',
-                                payload: 'FIRST'
-                            },
-                            {
-                                title: 'Prato Principal',
-                                type: 'postback',
-                                payload: 'MAIN'
-                            },
-                            {
-                                title: 'Sobremesa',
-                                type: 'postback',
-                                payload: 'DESSERT'
-                            }
-                        ]
-                    },
-                    {
-                        title: "Menu de Bebidas",
-                        subtitle: "Do tradicional ao inovador e exclusivo, confira a nossas opcões de bebidas!",
-                        image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/20968599_1413818518731403_2371003499954569216_n.jpg",
-                        buttons: [
-                            {
-                                title: 'Sem Álcool',
-                                type: 'postback',
-                                payload: 'N_ALC'
-                            },
-                            {
-                                title: 'Alcoólicas',
-                                type: 'postback',
-                                payload: 'ALC'
-                            },
-                            {
-                                title: 'Vinhos',
-                                type: 'postback',
-                                payload: 'WINE'
-                            }
-                        ]
-                    },
-                    {
-                        title: "Outras opcões",
-                        subtitle: "Faca sua reserva, deixe um feedback ou veja nossas promocões!",
-                        image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/18380940_1419359341457985_5632516340716666880_n.jpg",
-                        buttons: [
-                            {
-                                title: 'Fazer reserva',
-                                type: 'postback',
-                                payload: 'BOOKING'
-                            },
-                            {
-                                title: 'Deixar Feedback',
-                                type: 'postback',
-                                payload: 'FEEDBACK'
-                            },
-                            {
-                                title: 'Promoções',
-                                type: 'postback',
-                                payload: 'Promoções'
-                            }
-                        ]
-                    }
-                ],
-                []
-            ).then((result) => {
-                    console.log(result);
-                }
-            );
-        });
-    });
+    defaultMessage(payload, chat);
+});
 bot.on('postback:FIRST', (payload, chat) => {
     chat.sendGenericTemplate([
             {
@@ -401,6 +250,142 @@ bot.on('postback:DESSERT', (payload, chat) => {
         }
     );
 });
+bot.on('postback:N_ALC', (payload, chat) => {
+    chat.sendListTemplate([
+            {
+                title: "Chá da casa",
+                subtitle: "Delicioso Chá natural de Guaraná e gengibre, sem açucar\nPreço: R$ 7.00",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/14360046_622640044585430_6988469539340025856_n.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'CDC_DETAILS'
+                    }
+                ]
+            },
+            {
+                title: "Suco Natural",
+                subtitle: "Sabores: Maçã, Pera e Uva\nPreço: R$ 5.00",
+                image_url: "http://www.folhadomate.com//imagens/noticia/43709/55275-suco_de_maca.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'SCN_DETAILS'
+                    }
+                ]
+            },
+            {
+                title: "Refrigerante Caseiro",
+                subtitle: "Mais saudável e mais gostoso que o convencional\nPreço: R$ 5.00",
+                image_url: "http://www.tarifinasilyapilir.net/wp-content/uploads/buzlu-cay-tarifi-e1375446891620.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'RGCS_DETAILS'
+                    }
+                ]
+            },
+            {
+                title: "Refrigerante Convéncional",
+                subtitle: "Se puder evitar essa opção seu corpo agradece\nPreço: R$ 6.00",
+                image_url: "http://www.mundoboaforma.com.br/wp-content/uploads/2017/03/refrigerantes-620x330.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'RGCV_DETAILS'
+                    }
+                ]
+            }
+        ],
+        []
+    ).then((result) => {
+            console.log(result);
+        }
+    );
+});
 
 
 bot.start(process.env.PORT || 80);
+
+function defaultMessage(payloard, chat) {
+    chat.getUserProfile().then((user) => {
+        chat.say(`Oi, ${user.first_name}. Será um prazer atender você! Aqui está as opções em que posso te ajudar:`);
+        chat.sendListTemplate([
+                {
+                    title: "Nosso novo menu está cada dia mais cativante",
+                    subtitle: "São diversas opções, tudo feito com muita tecnica e acima de tudo amor!",
+                    image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/19985152_154583508443911_7143972438064234496_n.jpg",
+                    buttons: [
+                        {
+                            title: 'Entradas',
+                            type: 'postback',
+                            payload: 'FIRST'
+                        },
+                        {
+                            title: 'Prato Principal',
+                            type: 'postback',
+                            payload: 'MAIN'
+                        },
+                        {
+                            title: 'Sobremesa',
+                            type: 'postback',
+                            payload: 'DESSERT'
+                        }
+                    ]
+                },
+                {
+                    title: "Menu de Bebidas",
+                    subtitle: "Do tradicional ao inovador e exclusivo, confira a nossas opcões de bebidas!",
+                    image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/16585009_419464005060061_88164893923999744_n.jpg",
+                    buttons: [
+                        {
+                            title: 'Sem Álcool',
+                            type: 'postback',
+                            payload: 'N_ALC'
+                        },
+                        {
+                            title: 'Alcoólicas',
+                            type: 'postback',
+                            payload: 'ALC'
+                        },
+                        {
+                            title: 'Vinhos',
+                            type: 'postback',
+                            payload: 'WINE'
+                        }
+                    ]
+                },
+                {
+                    title: "Outras opcões",
+                    subtitle: "Faca sua reserva, deixe um feedback ou veja nossas promocões!",
+                    image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/18380940_1419359341457985_5632516340716666880_n.jpg",
+                    buttons: [
+                        {
+                            title: 'Fazer reserva',
+                            type: 'postback',
+                            payload: 'BOOKING'
+                        },
+                        {
+                            title: 'Deixar Feedback',
+                            type: 'postback',
+                            payload: 'FEEDBACK'
+                        },
+                        {
+                            title: 'Promoções',
+                            type: 'postback',
+                            payload: 'Promoções'
+                        }
+                    ]
+                }
+            ],
+            []
+        ).then((result) => {
+                console.log(result);
+            }
+        );
+    });
+}
