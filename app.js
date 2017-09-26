@@ -641,7 +641,7 @@ function GetDates(startDate, daysToAdd) {
             "Quarta",
             "Quinta",
             "Sexta",
-            "Saturday"];
+            "Sabado"];
     for (let i = 0; i <= daysToAdd; i++) {
         let currentDate = new Date();
         currentDate.setDate(startDate.getDate() + i);
