@@ -521,21 +521,21 @@ function askHowGood(convo, msg) {
             const answer = payload.message.text;
             switch (answer) {
                 case 'Ruim':
-                    convo.ask({text:'😥😥😥\n Eu sinto muito que você tinha tido uma má experiência...\nVocê poderia nos dizer qual foi o problema para que possamos fazer melhor da próxima vez?'},
+                    convo.ask({text:'😥😥😥\nEu sinto muito que você tinha tido uma má experiência...\nVocê poderia nos dizer qual foi o problema para que possamos fazer melhor da próxima vez?'},
                         (payload, convo) => {
                             convo.say('Anotado, por mais que gostáriamos de te oferecer a melhor experiência possível fico feliz por você ter compartilhado os problemas comigo.\n Vou ter uma conversa com o time sobre isso e da próxima vez proometo que será melhor\nMuito obrigado pela preferência e vou estár aguardando seu retorno para provar como você importa para nós! 😘😘😘');
                         }
                     );
                     break;
                 case 'Médio':
-                    convo.ask({text:'😩😩😩\n Que pena, gostáriamos que sua experiência aqui fosse excelente...\nVocê poderia nos dizer quais foram os problemas e os acertos para que possamos fazer melhor da próxima vez?'},
+                    convo.ask({text:'😩😩😩\nQue pena, gostáriamos que sua experiência aqui fosse excelente...\nVocê poderia nos dizer quais foram os problemas e os acertos para que possamos fazer melhor da próxima vez?'},
                         (payload, convo) => {
                             convo.say('Anotado, por mais que gostáriamos de te oferecer a melhor experiência possível fico feliz por você ter compartilhado seu feedback.\n Vou ter uma conversa com o time sobre isso e da próxima vez proometo que será ainda melhor\nMuito obrigado pela preferência e vou estár aguardando seu retorno para provar como você importa para nós! 😘😘😘');
                         }
                     );
                     break;
                 case 'Bom':
-                    convo.ask({text:'😁😁😁\n Que ótimo poder ouvir isso de você! É por você que dedicamos todos nossos esforços e saber que você está satisfeito enche nossos corações de alegria!\nVocê pode me dizer do que você mais gostou?'},
+                    convo.ask({text:'😁😁😁\nQue ótimo poder ouvir isso de você! É por você que dedicamos todos nossos esforços e saber que você está satisfeito enche nossos corações de alegria!\nVocê pode me dizer do que você mais gostou?'},
                         (payload, convo) => {
                             convo.say('😜 Muito obrigado pelo feedback, estamos a procura de melhorar a cada dia e seu feedback é muito importante pra isso.\n Muito obrigado também pela preferência e vou estár aguardando pra bater um papo com você novamente! 😘😘😘');
                         }
