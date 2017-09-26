@@ -621,6 +621,27 @@ Rua Agostinho Bretas, 8. Até logo!`);
 
 function GetDates(startDate, daysToAdd) {
     let aryDates = [];
+    let month = [
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+            "Agosto",
+            "Setembro",
+            "Outubro",
+            "Novembro",
+            "Dezembro"],
+        weekdays = [
+            "Domingo",
+            "Segunda",
+            "Terça",
+            "Quarta",
+            "Quinta",
+            "Sexta",
+            "Saturday"];
     for (let i = 0; i <= daysToAdd; i++) {
         let currentDate = new Date();
         currentDate.setDate(startDate.getDate() + i);
