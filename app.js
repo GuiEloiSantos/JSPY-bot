@@ -676,5 +676,5 @@ function matchPattern(answer) {
             "Sexta",
             "Saturday"];
 
-    return (weekdays.indexOf(test[0]) !== -1 && test[1] === "dia" && !(test[2].isNaN()) && (test[3] === 'de') && month.indexOf(test[4]) !== -1);
+    return (weekdays.indexOf(test[0]) !== -1 && test[1] === "dia" && !isNaN((test[2])) && (test[3] === 'de') && month.indexOf(test[4]) !== -1);
 }
