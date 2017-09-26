@@ -516,7 +516,7 @@ function askHowGood(convo, msg) {
         text: msg,
         quickReplies: quickReplyFeedback
     };
-    convo.question(firstquestion,
+    convo.ask(firstquestion,
         (payload, convo) => {
             const answer = payload.message.text;
             switch (answer) {
