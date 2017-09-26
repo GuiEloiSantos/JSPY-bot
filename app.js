@@ -311,7 +311,120 @@ bot.on('postback:N_ALC', (payload, chat) => {
         }
     );
 });
-
+bot.on('postback:ALC', (payload, chat) => {
+    chat.sendListTemplate([
+            {
+                title: "Maracu Chá",
+                subtitle: "Maracujá, jack daniels, espuma de gengibre\nPreço: R$ 13.00",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/16585009_419464005060061_88164893923999744_n.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'MRCC_DETAILS'
+                    }
+                ]
+            },
+            {
+                title: "Drink de Maçã e pimenta",
+                subtitle: "Drink de Maçã com pimenta e segredinho da casa\nPreço: R$ 15.00",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/17126606_394465864268016_1773675279676342272_n.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'DDMP_DETAILS'
+                    }
+                ]
+            },
+            {
+                title: "Sangria",
+                subtitle: "Bebida da Espanha, super deliciosa\nPreço: R$ 15.00",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/16585307_414794198863349_2314872087031840768_n.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'SANG_DETAILS'
+                    }
+                ]
+            },
+            {
+                title: "Drink de Aperol",
+                subtitle: "Drink de Aperol, o mais famoso da casa\nPreço: R$ 16.00",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/14719360_311155695922323_4265627476752859136_n.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'DDAP_DETAILS'
+                    }
+                ]
+            }
+        ],
+        []
+    ).then((result) => {
+            console.log(result);
+        }
+    );
+});
+bot.on('postback:WINE', (payload, chat) => {
+    chat.sendListTemplate([
+            {
+                title: "Herdade das Servas",
+                subtitle: "Vinho tinto alentejano composto por uvas das castas Aragonês, Touriga Nacional...\nPreço: R$ 23.00 / Taça",
+                image_url: "http://clubedevinhos.com/files/artigos/10-melhores-vinhos-tintos-para-ceia-natal_01.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'HDSV_DETAILS'
+                    }
+                ]
+            },
+            {
+                title: "Dom Divino Dão",
+                subtitle: "Vinho tinto muito suave de cor rubi com teor alcoólico de 12,5%.\nPreço: R$ 25.00",
+                image_url: "http://clubedevinhos.com/files/artigos/10-melhores-vinhos-tintos-para-ceia-natal_02.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'DDND_DETAILS'
+                    }
+                ]
+            },
+            {
+                title: "Mundus ",
+                subtitle: "Vinho tinto da região da Estremadura com um teor alcoólico de 13,5%.\nPreço: R$ 15.00",
+                image_url: "http://clubedevinhos.com/files/artigos/10-melhores-vinhos-tintos-para-ceia-natal_03.jpg",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'MUND_DETAILS'
+                    }
+                ]
+            },
+            {
+                title: "Serras de Azeitão",
+                subtitle: "Vinho tinto é proveniente das terras do Sado\nPreço: R$ 16.00",
+                image_url: "http://clubedevinhos.com/files/artigos/10-melhores-vinhos-tintos-para-ceia-natal_04.gif",
+                buttons: [
+                    {
+                        title: 'Mais detalhes',
+                        type: 'postback',
+                        payload: 'SRDA_DETAILS'
+                    }
+                ]
+            }
+        ],
+        []
+    ).then((result) => {
+            console.log(result);
+        }
+    );
+});
 
 bot.start(process.env.PORT || 80);
 
