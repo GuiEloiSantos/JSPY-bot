@@ -435,8 +435,9 @@ bot.on('postback:FEEDBACK', (payload, chat) => {
     });
 });
 bot.on('postback:BOOKING', (payload, chat) => {
-    console.log(payload);
-    console.log(chat);
+    chat.conversation((convo) => {
+        getBooking(convo, 'Obaaa! Que dia você planeja nos visitar?');
+    });
 });
 
 bot.start(process.env.PORT || 80);
@@ -528,30 +529,30 @@ function askHowGood(convo, msg) {
             const answer = payload.message.text;
             switch (answer) {
                 case 'Ruim':
-                    convo.sendTypingIndicator(2000);
+                    convo.sendTypingIndicator(6000);
                     convo.ask('😥😥😥\nEu sinto muito que você tinha tido uma má experiência...\nVocê poderia nos dizer qual foi o problema para que possamos fazer melhor da próxima vez?',
                         (payload, convo) => {
-                            convo.sendTypingIndicator(2000);
+                            convo.sendTypingIndicator(6000);
                             convo.say('Anotado, por mais que gostáriamos de te oferecer a melhor experiência possível fico feliz por você ter compartilhado os problemas comigo.\nVou ter uma conversa com o time sobre isso e da próxima vez prometo que será melhor\nMuito obrigado pela preferência e vou estár aguardando seu retorno para provar como você importa para nós! 😘😘😘');
                             convo.end();
                         }
                     );
                     break;
                 case 'Médio':
-                    convo.sendTypingIndicator(2000);
+                    convo.sendTypingIndicator(6000);
                     convo.ask('😩😩😩\nQue pena, gostáriamos que sua experiência aqui fosse excelente...\nVocê poderia nos dizer quais foram os problemas e os acertos para que possamos fazer melhor da próxima vez?',
                         (payload, convo) => {
-                            convo.sendTypingIndicator(2000);
+                            convo.sendTypingIndicator(6000);
                             convo.say('Anotado, por mais que gostáriamos de te oferecer a melhor experiência possível fico feliz por você ter compartilhado seu feedback.\nVou ter uma conversa com o time sobre isso e da próxima vez proometo que será ainda melhor\nMuito obrigado pela preferência e vou estár aguardando seu retorno para provar como você importa para nós! 😘😘😘');
                             convo.end();
                         }
                     );
                     break;
                 case 'Bom':
-                    convo.sendTypingIndicator(2000);
+                    convo.sendTypingIndicator(6000);
                     convo.ask('😁😁😁\nQue ótimo poder ouvir isso de você! É por você que dedicamos todos nossos esforços e saber que você está satisfeito enche nossos corações de alegria!\nVocê pode me dizer do que você mais gostou?',
                         (payload, convo) => {
-                            convo.sendTypingIndicator(2000);
+                            convo.sendTypingIndicator(6000);
                             convo.say('😜 Muito obrigado pelo feedback, estamos a procura de melhorar a cada dia e seu feedback é muito importante pra isso.\n Muito obrigado também pela preferência e vou estár aguardando pra bater um papo com você novamente! 😘😘😘');
                             convo.end();
                         }
@@ -563,4 +564,96 @@ function askHowGood(convo, msg) {
                     break;
             }
         });
+}
+
+function getBooking(convo, msg) {
+
+    let startDate = new Date();
+    const firstquestion = {
+        text: msg,
+        quickReplies: GetDates(startDate, 7)
+    };
+    convo.ask(firstquestion,
+        (payload, convo) => {
+            const answer = payload.message.text;
+            convo.set('day', answer);
+            if (matchPattern(answer)) {
+                convo.set('day', answer);
+                getTimeBooking(convo, `Ótimo, então temos um encontro marcado ${answer}.\nA que qual horário séria melhor para você?`);
+            } else {
+                getBooking(convo, "Eu acho que não tenho essa data dísponível, você pode escolher uma das disponível abaixo?")
+            }
+        });
+}
+
+function getTimeBooking(convo, msg) {
+    let timeQuest = {
+        text: msg,
+        quickReplies: ['Manhã', 'Tarde', 'Noite']
+    };
+    convo.ask(timeQuest,
+        (payload, convo) => {
+
+            const answer = payload.message.text;
+            let day = convo.get('day');
+            switch (answer) {
+                case 'Manhã':
+                    convo.say(`Que ótimo! Não posso esperar para te ter aqui na nossa casinha!\n${day} de ${answer} a temperatura prevista é de 24℃, será um dia super agradável, ainda mais com você aqui
+Sua reserva está confirmada e eu vou estár te esperando, o endereço caso não saiba é:
+Rua Agostinho Bretas, 8. Até logo!`);
+                    convo.end();
+                    break;
+                case 'Tarde':
+                    convo.say(`Que ótimo! Não posso esperar para te ter aqui na nossa casinha!\n${day} de ${answer} a temperatura prevista é de 21℃, será uma tarde super aconchegante.\nSua reserva está confirmada e eu vou estár te esperando, o endereço caso não saiba é:\nRua Agostinho Bretas, 8.  Até logo!`);
+                    convo.end();
+                    break;
+                case 'Noite':
+                    convo.say(`Que ótimo! Não posso esperar para te ter aqui na nossa casinha!\n${day} de ${answer} a temperatura prevista é de 15℃ e vamos ter um evento de caldos, nada melhor para uma noite fria né?.\nSua reserva está confirmada e eu vou estár te esperando, o endereço caso não saiba é:\nRua Agostinho Bretas, 8.  Até logo!`);
+                    convo.end();
+                    break;
+                default:
+                    getTimeBooking(convo, 'Desculpa eu não entendi, poderia selecionar uma das opções abaixo?');
+                    break;
+            }
+        }
+    );
+}
+
+function GetDates(startDate, daysToAdd) {
+    let aryDates = [];
+    for (let i = 0; i <= daysToAdd; i++) {
+        let currentDate = new Date();
+        currentDate.setDate(startDate.getDate() + i);
+        aryDates.push(weekdays[currentDate.getDay()] + " dia " + currentDate.getDate() + " de " + month[currentDate.getMonth()]);
+    }
+
+    return aryDates;
+}
+
+function matchPattern(answer) {
+
+    const test = answer.split(' ');
+    let month = [
+            "Janeiro",
+            "Fevereiro",
+            "Março",
+            "Abril",
+            "Maio",
+            "Junho",
+            "Julho",
+            "Agosto",
+            "Setembro",
+            "Outubro",
+            "Novembro",
+            "Dezembro"],
+        weekdays = [
+            "Domingo",
+            "Segunda",
+            "Terça",
+            "Quarta",
+            "Quinta",
+            "Sexta",
+            "Saturday"];
+
+    return (weekdays.indexOf(test[0]) !== -1 && test[1] === "dia" && !(test[2].isNaN()) && (test[3] === 'de') && month.indexOf(test[4]) !== -1);
 }
