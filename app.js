@@ -75,6 +75,8 @@ bot.setPersistentMenu([
 ]);
 bot.on('message', (payload, chat) => {
     console.log(payload);
+    console.log(payload.message.nlp);
+    console.log(payload.message.nlp.entities);
     console.log(chat);
     chat.getUserProfile().then((user) => {
         defaultMessage(`Olha, ${user.first_name}, isso é um pouco vergonhoso mas eu prefiro me ater as opções no menu para não cometer nenhum erro...\nSabe como é né? É melhor assim, se não eu iria acabar roubando seu trabalho.\nAqui estão as opções em que posso te ajudar:`, chat);
