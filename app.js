@@ -674,7 +674,7 @@ function matchPattern(answer) {
             "Quarta",
             "Quinta",
             "Sexta",
-            "Saturday"];
+            "Sabado"];
 
-    return (weekdays.indexOf(test[0]) !== -1 && test[1] === "dia" && !isNaN((test[2])) && (test[3] === 'de') && month.indexOf(test[4]) !== -1);
+    return true; //(weekdays.indexOf(test[0]) !== -1 && test[1] === "dia" && !isNaN((test[2])) && (test[3] === 'de') && month.indexOf(test[4]) !== -1);
 }
