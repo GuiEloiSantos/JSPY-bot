@@ -1,19 +1,3 @@
-let express = require('express');
-let bodyParser = require('body-parser');
-let path = require('path');
-let app = express();
-let router = require('./router/router');
-let hbs = require('hbs');
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-app.set('env', process.env.ENV || 'development');
-
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-
-app.use('/web', router);
-
 const BootBot = require('bootbot');
 const quickReplyFeedback = ['Ruim', 'Médio', 'Bom'];
 const bot = new BootBot({
@@ -132,7 +116,7 @@ bot.on('postback:FIRST', (payload, chat) => {
             {
                 title: "Bahianada",
                 subtitle: "Dadinhos de tapioca, banana, camarão e molho de moqueca!\nPreço: R$ 69.00",
-                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/21827056_117635038948942_7639582363755741184_n.jpg",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/20688316_1281807721945682_7704893320085897216_n.jpg",
                 buttons: [
                     {
                         title: 'Mais detalhes',
@@ -144,7 +128,7 @@ bot.on('postback:FIRST', (payload, chat) => {
             {
                 title: "Bolinho de Corda",
                 subtitle: "Cordeiro, chutney de manga, coalhada seca e molho ccc!\nPreço: R$ 79.00",
-                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/21827056_117635038948942_7639582363755741184_n.jpg",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/21041600_269913206837418_527865108609630208_n.jpg",
                 buttons: [
                     {
                         title: 'Mais detalhes',
@@ -694,7 +678,3 @@ function matchPattern(answer) {
 
     return true; //(weekdays.indexOf(test[0]) !== -1 && test[1] === "dia" && !isNaN((test[2])) && (test[3] === 'de') && month.indexOf(test[4]) !== -1);
 }
-
-app.listen(3000, function () {
-    console.log('Web working...');
-});
