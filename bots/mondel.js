@@ -6,7 +6,7 @@ const bot = new BootBot({
     appSecret: process.env.APP_SECRET
 });
 
-bot.setGreetingText("Olá meu nome é Mate, eu sou o agente virtual que vai te ajudar a entender o projeto do Guilherme, vamos começar?");
+bot.setGreetingText("Olá meu nome é Mate, precisa de mais informações sobre pratos e o Mon Del?");
 bot.setGetStartedButton("START");
 bot.setPersistentMenu([
     {
@@ -84,7 +84,7 @@ bot.on('message', (payload, chat) => {
 });
 bot.on('postback:START', (payload, chat) => {
     chat.getUserProfile().then((user) => {
-        defaultMessage(`Oi, ${user.first_name}. Será um prazer te ajudar você! Aqui estão os diferentes metodos utilizados:`, chat);
+        defaultMessage(`Oi, ${user.first_name}. Será um prazer atender você! Aqui está as opções em que posso te ajudar:`, chat);
     });
 });
 bot.on('postback:FIRST', (payload, chat) => {
@@ -446,68 +446,68 @@ function defaultMessage(msg, chat) {
     chat.say(msg);
     chat.sendGenericTemplate([
             {
-                title: "Sequencia de pergunta e respostas",
-                subtitle: "A ideia disso é iniciar uma sequencia de captura de lead e destacar a informação relevante usando a resposta do cliente",
-                image_url: "http://www.ictq.com.br/images/10-perguntas-e-respostas-importantes-sobre-validacao-de-limpeza-na-industria-farmaceutica-farmacia-farmaceutico-farmaceutica-ictq.jpeg",
+                title: "Nosso novo menu está cada dia mais cativante",
+                subtitle: "São diversas opções, tudo feito com muita tecnica e acima de tudo amor!",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/19985152_154583508443911_7143972438064234496_n.jpg",
                 buttons: [
                     {
-                        title: 'Testar',
+                        title: 'Entradas',
                         type: 'postback',
-                        payload: 'TEST-FAQ'
+                        payload: 'FIRST'
                     },
                     {
-                        title: 'Vantagens',
+                        title: 'Prato Principal',
                         type: 'postback',
-                        payload: 'VANT-FAQ'
+                        payload: 'MAIN'
                     },
                     {
-                        title: 'Desvantagens',
+                        title: 'Sobremesa',
                         type: 'postback',
-                        payload: 'DESV-FAQ'
+                        payload: 'DESSERT'
                     }
                 ]
             },
             {
-                title: "Inteligência Artificial",
-                subtitle: "Nesse metodo a ideia é utilizar de algoritimos de linguagem natural para interpretar uma entrada de usuario e destacar as informações de contato",
-                image_url: "http://www.hytrade.com.br/wp-content/uploads/2015/11/3-maneiras-de-colocar-dados-de-inteligencia-de-negocios-baseados-em-vendas-para-funcionar-para-voces.jpg",
+                title: "Menu de Bebidas",
+                subtitle: "Do tradicional ao inovador e exclusivo, confira a nossas opcões de bebidas!",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/16585009_419464005060061_88164893923999744_n.jpg",
                 buttons: [
                     {
-                        title: 'Testar',
+                        title: 'Sem Álcool',
                         type: 'postback',
-                        payload: 'TEST-IA'
+                        payload: 'N_ALC'
                     },
                     {
-                        title: 'Vantagens',
+                        title: 'Alcoólicas',
                         type: 'postback',
-                        payload: 'VANT-IA'
+                        payload: 'ALC'
                     },
                     {
-                        title: 'Desvantagens',
+                        title: 'Vinhos',
                         type: 'postback',
-                        payload: 'DESV-IA'
+                        payload: 'WINE'
                     }
                 ]
             },
             {
-                title: "Biblioteca de expressão regulares",
-                subtitle: "Neste metodo a ideia é criar diversos padrões para identificar o contato do usuário",
-                image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBzzcjgHCWVEVMKBeR6ARtia0nZnnLNASaVHKdJQoKa_NlcZge",
+                title: "Outras opcões",
+                subtitle: "Faca sua reserva, deixe um feedback ou veja nossas promocões!",
+                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/18380940_1419359341457985_5632516340716666880_n.jpg",
                 buttons: [
                     {
-                        title: 'Testar',
+                        title: 'Fazer reserva',
                         type: 'postback',
-                        payload: 'TEST-BER'
+                        payload: 'BOOKING'
                     },
                     {
-                        title: 'Vantagens',
+                        title: 'Deixar Feedback',
                         type: 'postback',
-                        payload: 'VANT-BER'
+                        payload: 'FEEDBACK'
                     },
                     {
-                        title: 'Desvantagens',
+                        title: 'Promoções',
                         type: 'postback',
-                        payload: 'DESV-BER'
+                        payload: 'Promoções'
                     }
                 ]
             }
