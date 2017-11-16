@@ -609,6 +609,7 @@ function testFaq(convo, msg) {
     const firstquestion = {
         text: msg,
     };
+    console.log("Chegou");
     convo.ask(firstquestion,
         (payload, convo) => {
             let answer = payload.message.text;
@@ -621,19 +622,21 @@ function testFaq(convo, msg) {
                         (payload, convo) => {
                             let answer = payload.message.text;
                             convo.set('phone', answer);
-                            convo.ask({text: `Excelente, só para confimar, seu nome é: ${name}, seu telefone é: ${phone} e seu email é ${email}?`, quickReplies:yesNo},
+                            convo.ask({
+                                    text: `Excelente, só para confimar, seu nome é: ${name}, seu telefone é: ${phone} e seu email é ${email}?`,
+                                    quickReplies: yesNo
+                                },
                                 (payload, convo) => {
                                     let answer = payload.message.text;
-                                    if(answer ==='Sim'){
+                                    if (answer === 'Sim') {
                                         convo.say(`Ótimo ${name}, espero que tenha ficado claro como o sistema de sequencia de perguntas funciona.`);
                                         convo.end();
-                                    }else {
+                                    } else {
                                         testFaq(convo, 'Ok, vamos tentar novamente, qual é seu nome?');
                                     }
                                 });
                         });
                 });
-            getTimeBooking(convo, `Ótimo, então temos um encontro marcado ${answer}.\nA que qual horário séria melhor para você?`);
         });
 }
 
@@ -644,30 +647,30 @@ function testIA(convo, msg) {
     };
     convo.ask(firstquestion,
         (payload, convo) => {
-            if(payload.message.text==='Terminar'){
+            if (payload.message.text === 'Terminar') {
                 convo.say(`Beleza espero que tenha gostado!`);
                 convo.end();
-            }else {
-                let phone =[], email =[];
-                if(payload.message.nlp.entities.phone_number){
-                    for(let i=0, size = payload.message.nlp.entities.phone_number.length;i<size;i++){
-                        if(payload.message.nlp.entities.phone_number[i].confidence > 0.5){
-                            phone.push(payload.message.nlp.entities.phone_number[i].value +" com bastante certeza. \n");
-                        }else {
-                            phone.push(payload.message.nlp.entities.phone_number[i].value +" mas posso estar errado. \n");
+            } else {
+                let phone = [], email = [];
+                if (payload.message.nlp.entities.phone_number) {
+                    for (let i = 0, size = payload.message.nlp.entities.phone_number.length; i < size; i++) {
+                        if (payload.message.nlp.entities.phone_number[i].confidence > 0.5) {
+                            phone.push(payload.message.nlp.entities.phone_number[i].value + " com bastante certeza. \n");
+                        } else {
+                            phone.push(payload.message.nlp.entities.phone_number[i].value + " mas posso estar errado. \n");
                         }
                     }
                 }
-                if(payload.message.nlp.entities.email){
-                    for(let i=0, size = payload.message.nlp.entities.email.length;i<size;i++){
-                        if(payload.message.nlp.entities.email[i].confidence > 0.5){
-                            email.push(payload.message.nlp.entities.email[i].value +" com bastante certeza. \n");
-                        }else {
-                            email.push(payload.message.nlp.entities.email[i].value +" mas posso estar errado. \n");
+                if (payload.message.nlp.entities.email) {
+                    for (let i = 0, size = payload.message.nlp.entities.email.length; i < size; i++) {
+                        if (payload.message.nlp.entities.email[i].confidence > 0.5) {
+                            email.push(payload.message.nlp.entities.email[i].value + " com bastante certeza. \n");
+                        } else {
+                            email.push(payload.message.nlp.entities.email[i].value + " mas posso estar errado. \n");
                         }
                     }
                 }
-                let message ='';//'Telefones: '+phone.join(' ,') +'\n Emails: '+ email.join(' ,');
+                let message = '';//'Telefones: '+phone.join(' ,') +'\n Emails: '+ email.join(' ,');
                 convo.say(message);
                 testIA(convo, "Vamos denovo?");
             }
