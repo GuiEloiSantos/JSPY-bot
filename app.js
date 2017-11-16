@@ -605,19 +605,18 @@ function askHowGood(convo, msg) {
 
 function testFaq(convo, msg) {
 
-    console.log("Chegou");
     convo.ask(msg,
         (payload, convo) => {
-            let answer = payload.message.text;
-            convo.set('name', answer);
+            let name = payload.message.text;
+            convo.set('name', name);
             convo.ask( `Prazer em conhece-lo ${name}, você poderia me falar seu email?`,
                 (payload, convo) => {
-                    let answer = payload.message.text;
-                    convo.set('email', answer);
+                    let email = payload.message.text;
+                    convo.set('email', email);
                     convo.ask( `Ótimo, por fim, qual o melhor metodo pra entrar em contato com você?`,
                         (payload, convo) => {
-                            let answer = payload.message.text;
-                            convo.set('phone', answer);
+                            let phone = payload.message.text;
+                            convo.set('phone', phone);
                             convo.ask({
                                     text: `Excelente, só para confimar, seu nome é: ${name}, seu telefone é: ${phone} e seu email é ${email}?`,
                                     quickReplies: yesNo
@@ -638,10 +637,8 @@ function testFaq(convo, msg) {
 
 
 function testIA(convo, msg) {
-    const firstquestion = {
-        text: msg
-    };
-    convo.ask(firstquestion,
+
+    convo.ask(msg,
         (payload, convo) => {
             if (payload.message.text === 'Terminar') {
                 convo.say(`Beleza espero que tenha gostado!`);
@@ -666,7 +663,7 @@ function testIA(convo, msg) {
                         }
                     }
                 }
-                let message = '';//'Telefones: '+phone.join(' ,') +'\n Emails: '+ email.join(' ,');
+                let message = 'Telefones: '+phone.join(' ,') +'\n Emails: '+ email.join(' ,');
                 convo.say(message);
                 testIA(convo, "Vamos denovo?");
             }
