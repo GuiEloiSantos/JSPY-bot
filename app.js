@@ -447,9 +447,6 @@ bot.on('postback:VANT-FAQ', (payload, chat) => {
 bot.on('postback:DESV-FAQ', (payload, chat) => {
     chat.say('A lista é grande, primeiramente, ele tende a inflacionar o número de contatos adquiridos, uma vez que toda sequencia de captura iniciada será considerada um contato a mais, mas muitas deles não são, segundamente é um processo extremamente robotico e último e mais importante, quando detectados padrões como esse a maioria das informações dadas são ou' +
         'informações providas com a inteção de enganar ou informação poluida, ou seja o processo pode concluir que o nome de alguém é "Marta e preciso que alguem me ligue rápido".');
-
-    chat.say('Trazendo para as necessidades desse projeto, essa solução não tem nenhum dois requisitos mínimos, pois tem mais de 100% de captura, ou seja, captura contatos que nem contatos são' +
-        'E a taxa de erro ao destacar as informações varia de acordo com o tipo de chat mas é normalmente maior que 40%');
 });
 
 bot.on('postback:TEST-IA', (payload, chat) => {
@@ -607,19 +604,17 @@ function askHowGood(convo, msg) {
 }
 
 function testFaq(convo, msg) {
-    const firstquestion = {
-        text: msg
-    };
+
     console.log("Chegou");
-    convo.ask(firstquestion,
+    convo.ask(msg,
         (payload, convo) => {
             let answer = payload.message.text;
             convo.set('name', answer);
-            convo.ask({text: `Prazer em conhece-lo ${name}, você poderia me falar seu email?`},
+            convo.ask( `Prazer em conhece-lo ${name}, você poderia me falar seu email?`,
                 (payload, convo) => {
                     let answer = payload.message.text;
                     convo.set('email', answer);
-                    convo.ask({text: `Ótimo, por fim, qual o melhor metodo pra entrar em contato com você?`},
+                    convo.ask( `Ótimo, por fim, qual o melhor metodo pra entrar em contato com você?`,
                         (payload, convo) => {
                             let answer = payload.message.text;
                             convo.set('phone', answer);
