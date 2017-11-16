@@ -1,5 +1,7 @@
 const BootBot = require('bootbot');
 const quickReplyFeedback = ['Ruim', 'Médio', 'Bom'];
+const yesNo = ['Sim', 'Não'];
+
 const bot = new BootBot({
     accessToken: process.env.ACCESS_TOKEN,
     verifyToken: process.env.VERIFY_TOKEN,
@@ -434,9 +436,24 @@ bot.on('postback:FEEDBACK', (payload, chat) => {
         askHowGood(convo, 'Que ótimo, é sempre bom ouvir aqueles que são mais importantes para nós, para começar, como você avaliaria o Mon Del?');
     });
 });
-bot.on('postback:BOOKING', (payload, chat) => {
+bot.on('postback:TEST-FAQ', (payload, chat) => {
     chat.conversation((convo) => {
-        getBooking(convo, 'Obaaa! Que dia você planeja nos visitar?');
+        testFaq(convo, 'Ótimo, então vamos começar. Qual é seu nome?');
+    });
+});
+bot.on('postback:VANT-FAQ', (payload, chat) => {
+    chat.say('Bem, a grande vantagem do sistema de perguntas e resposta é a simplicidade do mesmo, uma vez que usa o fluxo natural do chat para adquirir as respostas, ele não aumenta em nada o tempo de chat.');
+});
+bot.on('postback:DESV-FAQ', (payload, chat) => {
+    chat.say('A lista é grande, primeiramente, ele tende a inflacionar o número de contatos adquiridos, uma vez que toda sequencia de captura iniciada será considerada um contato a mais, mas muitas deles não são, segundamente é um processo extremamente robotico e último e mais importante, quando detectados padrões como esse a maioria das informações dadas são ou' +
+        'informações providas com a inteção de enganar ou informação poluida, ou seja o processo pode concluir que o nome de alguém é "Marta e preciso que alguem me ligue rápido".' +
+        'Trazendo para as necessidades desse projeto, essa solução não tem nenhum dois requisitos mínimos, pois tem mais de 100% de captura, ou seja, captura contatos que nem contatos são' +
+        'E a taxa de erro ao destacar as informações varia de acordo com o tipo de chat mas é normalmente maior que 40%');
+});
+
+bot.on('postback:TEST-IA', (payload, chat) => {
+    chat.conversation((convo) => {
+        testIA(convo, 'Beleza, vamos lá. Fale qualquer sentença que eu vou tentar identificar as informações de contato (Obs: eu sou melhor no Inglês), quando quiser terminar digite terminar e eu pararei de procurar por informações de contato. ');
     });
 });
 
@@ -492,6 +509,28 @@ function defaultMessage(msg, chat) {
             {
                 title: "Biblioteca de expressão regulares",
                 subtitle: "Neste metodo a ideia é criar diversos padrões para identificar o contato do usuário",
+                image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBzzcjgHCWVEVMKBeR6ARtia0nZnnLNASaVHKdJQoKa_NlcZge",
+                buttons: [
+                    {
+                        title: 'Testar',
+                        type: 'postback',
+                        payload: 'TEST-BER'
+                    },
+                    {
+                        title: 'Vantagens',
+                        type: 'postback',
+                        payload: 'VANT-BER'
+                    },
+                    {
+                        title: 'Desvantagens',
+                        type: 'postback',
+                        payload: 'DESV-BER'
+                    }
+                ]
+            },
+            {
+                title: "Resultado",
+                subtitle: "Aqui pode ver informações sobre quais foram os resultados",
                 image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBzzcjgHCWVEVMKBeR6ARtia0nZnnLNASaVHKdJQoKa_NlcZge",
                 buttons: [
                     {
@@ -566,22 +605,71 @@ function askHowGood(convo, msg) {
         });
 }
 
-function getBooking(convo, msg) {
-
-    let startDate = new Date();
+function testFaq(convo, msg) {
     const firstquestion = {
         text: msg,
-        quickReplies: GetDates(startDate, 7)
     };
     convo.ask(firstquestion,
         (payload, convo) => {
-            const answer = payload.message.text;
-            convo.set('day', answer);
-            if (matchPattern(answer)) {
-                convo.set('day', answer);
-                getTimeBooking(convo, `Ótimo, então temos um encontro marcado ${answer}.\nA que qual horário séria melhor para você?`);
-            } else {
-                getBooking(convo, "Eu acho que não tenho essa data dísponível, você pode escolher uma das disponível abaixo?")
+            let answer = payload.message.text;
+            convo.set('name', answer);
+            convo.ask({text: `Prazer em conhece-lo ${name}, você poderia me falar seu email?`},
+                (payload, convo) => {
+                    let answer = payload.message.text;
+                    convo.set('email', answer);
+                    convo.ask({text: `Ótimo, por fim, qual o melhor metodo pra entrar em contato com você?`},
+                        (payload, convo) => {
+                            let answer = payload.message.text;
+                            convo.set('phone', answer);
+                            convo.ask({text: `Excelente, só para confimar, seu nome é: ${name}, seu telefone é: ${phone} e seu email é ${email}?`, quickReplies:yesNo},
+                                (payload, convo) => {
+                                    let answer = payload.message.text;
+                                    if(answer ==='Sim'){
+                                        convo.say(`Ótimo ${name}, espero que tenha ficado claro como o sistema de sequencia de perguntas funciona.`);
+                                        convo.end();
+                                    }else {
+                                        testFaq(convo, 'Ok, vamos tentar novamente, qual é seu nome?');
+                                    }
+                                });
+                        });
+                });
+            getTimeBooking(convo, `Ótimo, então temos um encontro marcado ${answer}.\nA que qual horário séria melhor para você?`);
+        });
+}
+
+
+function testIA(convo, msg) {
+    const firstquestion = {
+        text: msg,
+    };
+    convo.ask(firstquestion,
+        (payload, convo) => {
+            if(payload.message.text==='Terminar'){
+                convo.say(`Beleza espero que tenha gostado!`);
+                convo.end();
+            }else {
+                let phone =[], email =[];
+                if(payload.message.nlp.entities.phone_number){
+                    for(let i=0, size = payload.message.nlp.entities.phone_number.length;i<size;i++){
+                        if(payload.message.nlp.entities.phone_number[i].confidence > 0.5){
+                            phone.push(payload.message.nlp.entities.phone_number[i].value +" com bastante certeza. \n");
+                        }else {
+                            phone.push(payload.message.nlp.entities.phone_number[i].value +" mas posso estar errado. \n");
+                        }
+                    }
+                }
+                if(payload.message.nlp.entities.email){
+                    for(let i=0, size = payload.message.nlp.entities.email.length;i<size;i++){
+                        if(payload.message.nlp.entities.email[i].confidence > 0.5){
+                            email.push(payload.message.nlp.entities.email[i].value +" com bastante certeza. \n");
+                        }else {
+                            email.push(payload.message.nlp.entities.email[i].value +" mas posso estar errado. \n");
+                        }
+                    }
+                }
+                let message ='Telefones: '+phone.join(' ,') +'\n Emails: '+ email.join(' ,');
+                convo.say(message);
+                testIA(convo, "Vamos denovo?");
             }
         });
 }
