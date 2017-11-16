@@ -667,7 +667,7 @@ function testIA(convo, msg) {
                         }
                     }
                 }
-                let message ='Telefones: '+phone.join(' ,') +'\n Emails: '+ email.join(' ,');
+                let message ='';//'Telefones: '+phone.join(' ,') +'\n Emails: '+ email.join(' ,');
                 convo.say(message);
                 testIA(convo, "Vamos denovo?");
             }
