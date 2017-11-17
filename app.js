@@ -351,7 +351,7 @@ function validateEmail(text) {
     let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     for(let i =0, size = aux.length; i<size; i++){
         if(aux[i].match(re))
-            return aux[i].match(re);
+            return aux[i];
     }
     return "";
 }
