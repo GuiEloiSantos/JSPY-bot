@@ -306,7 +306,7 @@ function testReg(convo, msg) {
                 let resp;
                 resp = splitSetence(payload.message.text);
 
-                let message = 'Telefone: ' +resp.phone?resp.phone:"achei não " + '\n Email: ' + resp.email?resp.email:"achei não";
+                let message = 'Telefone: ' +(resp.phone?resp.phone:'achei não ') + '\n Email: ' + (resp.email?resp.email:'achei não');
                 convo.say(message);
                 testReg(convo, "Vamos denovo?");
             }
