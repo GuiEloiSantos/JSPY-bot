@@ -306,7 +306,7 @@ function testReg(convo, msg) {
                 let resp;
                 resp = splitSetence(payload.message.text);
 
-                let message = 'Telefone: ' +resp.phone + '\n Email: ' + resp.email;
+                let message = 'Telefone: ' +resp.phone?resp.phone:"achei não " + '\n Email: ' + resp.email?resp.email:"achei não";
                 convo.say(message);
                 testReg(convo, "Vamos denovo?");
             }
@@ -320,6 +320,7 @@ function splitSetence(text) {
     text = text.toLowerCase();
     if (text.includes(myPhone)) {
         index = text.indexOf(myPhone);
+        console.log('Index: '+index);
         if (index > 2) {
             if (text[index - 2] === "e" ||
                 text[index - 2] === "é") {
@@ -327,11 +328,12 @@ function splitSetence(text) {
                 phone = validatePhone(aux1[0]);
             }
         }
+        console.log('Lenght: '+text.length);
         if(text.length > index+2){
             if (text[index + 2] === "e" ||
                 text[index + 2] === "é") {
                 aux1 = text.split(myPhone);
-                phone = validatePhone(aux1[1]);
+                phone = validatePhone(aux1[1])?validatePhone(aux1[1]):phone;
             }
         }
     } else if (text.includes(youCanCallMeAt)) {
@@ -340,7 +342,7 @@ function splitSetence(text) {
             if (text[index + 2] === "no" ||
                 text[index + 2] === "usando") {
                 aux1 = text.split(youCanCallMeAt);
-                phone = validatePhone(aux1[1]);
+                phone = validatePhone(aux1[1])?validatePhone(aux1[1]):phone;
             }
         }
     }
@@ -357,7 +359,7 @@ function splitSetence(text) {
             if (text[index + 2] === "e" ||
                 text[index + 2] === "é") {
                 aux1 = text.split(myEmail);
-                email = validateEmail(aux1[1]);
+                email = validateEmail(aux1[1])?validateEmail(aux1[1]):email;
             }
         }
     }
