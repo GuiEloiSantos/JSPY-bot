@@ -308,18 +308,18 @@ function splitSetence(text) {
         }
 
         index += myPhone.length;
-        if(text.length > index+2){
-            if (text[index + 2] === "e" ||
-                text[index + 2] === "é") {
+        if(text.length > index+1){
+            if (text[index + 1] === "e" ||
+                text[index + 1] === "é") {
                 aux1 = text.split(myPhone);
                 phone = validatePhone(aux1[1])?validatePhone(aux1[1]):phone;
             }
         }
     } else if (text.includes(youCanCallMeAt)) {
         index = text.indexOf(youCanCallMeAt) + youCanCallMeAt.length;
-        if(text.length > index+2){
-            if (text[index + 2] === "no" ||
-                text[index + 2] === "usando") {
+        if(text.length > index+1){
+            if (text[index + 1] === "no" ||
+                text[index + 1] === "usando") {
                 aux1 = text.split(youCanCallMeAt);
                 phone = validatePhone(aux1[1])?validatePhone(aux1[1]):phone;
             }
@@ -335,9 +335,9 @@ function splitSetence(text) {
             }
         }
         index += myEmail.length;
-        if(text.length > index+2){
-            if (text[index + 2] === "e" ||
-                text[index + 2] === "é") {
+        if(text.length > index+1){
+            if (text[index + 1] === "e" ||
+                text[index + 1] === "é") {
                 aux1 = text.split(myEmail);
                 email = validateEmail(aux1[1])?validateEmail(aux1[1]):email;
             }
