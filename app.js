@@ -348,7 +348,7 @@ function splitSetence(text) {
 
 function validateEmail(text) {
     let aux = text.split(" ");
-    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     for(let i =0, size = aux.length; i<size; i++){
         if(aux[i].match(re))
             return aux[i].match(re);
@@ -357,11 +357,12 @@ function validateEmail(text) {
 }
 
 function validatePhone(text) {
+    let result ='';
     let aux = text.split(" ");
     let re = /^[a-z 0-9._]+$/ig;
     for(let i =0, size = aux.length; i<size; i++){
         if(aux[i].match(re))
-            return aux[i].match(re);
+            result+= aux[i].match(re);
     }
-    return "";
+    return result;
 }
