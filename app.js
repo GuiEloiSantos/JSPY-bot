@@ -304,7 +304,7 @@ function testReg(convo, msg) {
                 convo.end();
             } else {
                 let resp;
-                resp = splitSetence(payload.message);
+                resp = splitSetence(payload.message.text);
 
                 let message = 'Telefone: ' +resp.phone + '\n Email: ' + resp.email;
                 convo.say(message);
@@ -316,7 +316,7 @@ function testReg(convo, msg) {
 
 function splitSetence(text) {
     const myPhone = "meu telefone", youCanCallMeAt = "pode me ligar", myEmail = "meu email";
-    let name, email, phone, aux1 = "", aux2 = "", index;
+    let  email, phone, aux1 = "",  index;
     text = text.toLowerCase();
     if (text.includes(myPhone)) {
         index = text.indexOf(myPhone);
