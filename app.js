@@ -12,65 +12,65 @@ bot.setGreetingText("Olá meu nome é Mate, eu sou o agente virtual que vai te a
 bot.setGetStartedButton("START");
 bot.setPersistentMenu([
     {
-        title: 'Ver Pratos',
+        title: 'Sequencia de perguntas',
         type: 'nested',
         call_to_actions: [
             {
-                title: 'Entradas',
+                title: 'Testar',
                 type: 'postback',
-                payload: 'FIRST'
+                payload: 'TEST-FAQ'
             },
             {
-                title: 'Prato Principal',
+                title: 'Vantagens',
                 type: 'postback',
-                payload: 'MAIN'
+                payload: 'VANT-FAQ'
             },
             {
-                title: 'Sobremesa',
+                title: 'Desvantagens',
                 type: 'postback',
-                payload: 'DESSERT'
+                payload: 'DESV-FAQ'
             }
         ]
     },
     {
-        title: 'Bebidas',
+        title: 'NLP',
         type: 'nested',
         call_to_actions: [
             {
-                title: 'Sem Álcool',
+                title: 'Testar',
                 type: 'postback',
-                payload: 'N_ALC'
+                payload: 'TEST-IA'
             },
             {
-                title: 'Alcoólicas',
+                title: 'Vantagens',
                 type: 'postback',
-                payload: 'ALC'
+                payload: 'VANT-IA'
             },
             {
-                title: 'Vinhos',
+                title: 'Desvantagens',
                 type: 'postback',
-                payload: 'WINE'
+                payload: 'DESV-IA'
             }
         ]
     },
     {
-        title: 'Outros',
+        title: 'Expressão Regular',
         type: 'nested',
         call_to_actions: [
             {
-                title: 'Fazer reserva',
+                title: 'Testar',
                 type: 'postback',
-                payload: 'BOOKING'
+                payload: 'TEST-BER'
             },
             {
-                title: 'Deixar Feedback',
+                title: 'Vantagens',
                 type: 'postback',
-                payload: 'FEEDBACK'
+                payload: 'VANT-BER'
             },
             {
-                title: 'Promoções',
+                title: 'Desvantagens',
                 type: 'postback',
-                payload: 'Promoções'
+                payload: 'DESV-BER'
             }
         ]
     }
@@ -445,7 +445,7 @@ bot.on('postback:VANT-FAQ', (payload, chat) => {
     chat.say('Bem, a grande vantagem do sistema de perguntas e resposta é a simplicidade do mesmo, uma vez que usa o fluxo natural do chat para adquirir as respostas, ele não aumenta em nada o tempo de chat.');
 });
 bot.on('postback:DESV-FAQ', (payload, chat) => {
-    chat.say('A lista é grande, primeiramente, ele tende a inflacionar o número de contatos adquiridos, uma vez que toda sequencia de captura iniciada será considerada um contato a mais, mas muitas deles não são, segundamente é um processo extremamente robotico e último e mais importante, quando detectados padrões como esse a maioria das informações dadas são ou' +
+    chat.say('A lista é grande, primeiramente, ele tende a inflacionar o número de contatos adquiridos, uma vez que toda sequencia de captura iniciada será considerada um contato a mais, mas muitas deles não são, também é um processo extremamente robotico e último e mais importante, quando detectados padrões como esse a maioria das informações dadas são ou ' +
         'informações providas com a inteção de enganar ou informação poluida, ou seja o processo pode concluir que o nome de alguém é "Marta e preciso que alguem me ligue rápido".');
 });
 
@@ -454,6 +454,8 @@ bot.on('postback:TEST-IA', (payload, chat) => {
         testIA(convo, 'Beleza, vamos lá. Fale qualquer sentença que eu vou tentar identificar as informações de contato (Obs: eu sou melhor no Inglês), quando quiser terminar digite terminar e eu pararei de procurar por informações de contato. ');
     });
 });
+
+
 
 bot.start(process.env.PORT || 80);
 
@@ -483,7 +485,7 @@ function defaultMessage(msg, chat) {
                 ]
             },
             {
-                title: "Inteligência Artificial",
+                title: "NLP",
                 subtitle: "Nesse metodo a ideia é utilizar de algoritimos de linguagem natural para interpretar uma entrada de usuario e destacar as informações de contato",
                 image_url: "http://www.hytrade.com.br/wp-content/uploads/2015/11/3-maneiras-de-colocar-dados-de-inteligencia-de-negocios-baseados-em-vendas-para-funcionar-para-voces.jpg",
                 buttons: [
@@ -602,7 +604,6 @@ function askHowGood(convo, msg) {
             }
         });
 }
-
 function testFaq(convo, msg) {
 
     convo.ask(msg,
@@ -618,7 +619,7 @@ function testFaq(convo, msg) {
                             let phone = payload.message.text;
                             convo.set('phone', phone);
                             convo.ask({
-                                    text: `Excelente, só para confimar, seu nome é: ${name}, seu telefone é: ${phone} e seu email é ${email}?`,
+                                    text: `Excelente, só para confimar, seu nome é: ${name},\n seu telefone é: ${phone}\n e seu email é ${email}?`,
                                     quickReplies: yesNo
                                 },
                                 (payload, convo) => {
@@ -634,8 +635,6 @@ function testFaq(convo, msg) {
                 });
         });
 }
-
-
 function testIA(convo, msg) {
 
     convo.ask(msg,
