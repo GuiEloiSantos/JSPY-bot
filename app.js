@@ -197,28 +197,6 @@ function defaultMessage(msg, chat) {
                         payload: 'DESV-BER'
                     }
                 ]
-            },
-            {
-                title: "Resultado",
-                subtitle: "Aqui pode ver informações sobre quais foram os resultados",
-                image_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBzzcjgHCWVEVMKBeR6ARtia0nZnnLNASaVHKdJQoKa_NlcZge",
-                buttons: [
-                    {
-                        title: 'Testar',
-                        type: 'postback',
-                        payload: 'TEST-BER'
-                    },
-                    {
-                        title: 'Vantagens',
-                        type: 'postback',
-                        payload: 'VANT-BER'
-                    },
-                    {
-                        title: 'Desvantagens',
-                        type: 'postback',
-                        payload: 'DESV-BER'
-                    }
-                ]
             }
         ],
         []
@@ -328,7 +306,8 @@ function splitSetence(text) {
                 phone = validatePhone(aux1[0]);
             }
         }
-        console.log('Lenght: '+text.length);
+
+        index += myPhone.length;
         if(text.length > index+2){
             if (text[index + 2] === "e" ||
                 text[index + 2] === "é") {
@@ -337,7 +316,7 @@ function splitSetence(text) {
             }
         }
     } else if (text.includes(youCanCallMeAt)) {
-        index = text.indexOf(youCanCallMeAt);
+        index = text.indexOf(youCanCallMeAt) + youCanCallMeAt.length;
         if(text.length > index+2){
             if (text[index + 2] === "no" ||
                 text[index + 2] === "usando") {
@@ -355,6 +334,7 @@ function splitSetence(text) {
                 email = validateEmail(aux1[0]);
             }
         }
+        index += myEmail.length;
         if(text.length > index+2){
             if (text[index + 2] === "e" ||
                 text[index + 2] === "é") {
@@ -367,11 +347,21 @@ function splitSetence(text) {
 }
 
 function validateEmail(text) {
+    let aux = text.split(" ");
     let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return text.match(re)
+    for(let i =0, size = aux.length; i<size; i++){
+        if(aux[i].match(re))
+            return aux[i].match(re);
+    }
+    return "";
 }
 
 function validatePhone(text) {
-    let re = /[0-9+#-]/;
-    return text.match(re)
+    let aux = text.split(" ");
+    let re = /^[a-z 0-9._]+$/ig;
+    for(let i =0, size = aux.length; i<size; i++){
+        if(aux[i].match(re))
+            return aux[i].match(re);
+    }
+    return "";
 }
