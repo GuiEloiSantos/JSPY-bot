@@ -9,6 +9,7 @@ request.get('https://symfony-user-bundle.herokuapp.com/api/login_check', {
     }
 }, (response) => {
     console.log(response);
+    console.log("daraaan");
 
 });
 
