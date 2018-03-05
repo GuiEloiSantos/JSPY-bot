@@ -2,7 +2,7 @@ const BootBot = require('bootbot');
 
 let request = require('request');
 
-request.get('https://symfony-user-bundle.herokuapp.com/api/login_check',
+request.post('https://symfony-user-bundle.herokuapp.com/api/login_check',
     {
         _user: 'miterrobot@gmail.com',
         _password: 'Robot123'
