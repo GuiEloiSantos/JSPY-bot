@@ -8,7 +8,7 @@ request.get('https://symfony-user-bundle.herokuapp.com/api/login_check', {
         _password: 'Robot123'
     }
 }, (response) => {
-console.log(response);
+    console.log(response);
 
 });
 
@@ -40,17 +40,6 @@ bot.setPersistentMenu([
         ]
     },
     {
-        title: 'POST Methods',
-        type: 'nested',
-        call_to_actions: [
-            {
-                title: 'Create new User',
-                type: 'postback',
-                payload: 'CREATE-USER'
-            }
-        ]
-    },
-    {
         title: 'PUT Methods',
         type: 'nested',
         call_to_actions: [
@@ -67,13 +56,18 @@ bot.setPersistentMenu([
         ]
     },
     {
-        title: 'DELETE Methods',
+        title: 'DELETE/POST Methods',
         type: 'nested',
         call_to_actions: [
             {
                 title: 'Delete User',
                 type: 'postback',
                 payload: 'DELETE-USER'
+            },
+            {
+                title: 'Create new User',
+                type: 'postback',
+                payload: 'CREATE-USER'
             }
         ]
     }
