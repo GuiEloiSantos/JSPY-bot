@@ -7,8 +7,8 @@ request.get('https://symfony-user-bundle.herokuapp.com/api/login_check',
         _user: 'miterrobot@gmail.com',
         _password: 'Robot123'
     }
-, (error,response) => {
-    console.log(response);
+, (error,response,body) => {
+    console.log(body);
     console.log("daraaan");
 
 });
