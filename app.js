@@ -1,6 +1,17 @@
 const BootBot = require('bootbot');
-const quickReplyFeedback = ['Ruim', 'Médio', 'Bom'];
-const yesNo = ['Sim', 'Não'];
+
+let request = require('request');
+
+request.get('https://symfony-user-bundle.herokuapp.com/api/login_check', {
+    auth: {
+        _user: 'miterrobot@gmail.com',
+        _password: 'Robot123'
+    }
+}, (response) => {
+console.log(response);
+
+});
+
 
 const bot = new BootBot({
     accessToken: process.env.ACCESS_TOKEN,
@@ -8,92 +19,84 @@ const bot = new BootBot({
     appSecret: process.env.APP_SECRET
 });
 
-bot.setGreetingText("Olá meu nome é Mate, eu sou o agente virtual que vai te ajudar a entender o projeto do Guilherme, vamos começar?");
-bot.setGetStartedButton("START");
+bot.setGreetingText("Hi there, my name is UserMate 😀, I was done so you could test the User Bundle endpoints." +
+    "Shall we begin?");
+bot.setGetStartedButton("BEGIN");
 bot.setPersistentMenu([
     {
-        title: 'Sequencia de perguntas',
+        title: 'GET Methods',
         type: 'nested',
         call_to_actions: [
             {
-                title: 'Testar',
+                title: 'Get User Details',
                 type: 'postback',
-                payload: 'TEST-FAQ'
+                payload: 'GET-USER'
             },
             {
-                title: 'Vantagens',
+                title: 'Get User List',
                 type: 'postback',
-                payload: 'VANT-FAQ'
-            },
-            {
-                title: 'Desvantagens',
-                type: 'postback',
-                payload: 'DESV-FAQ'
+                payload: 'GET-USERS'
             }
         ]
     },
     {
-        title: 'NLP',
+        title: 'POST Methods',
         type: 'nested',
         call_to_actions: [
             {
-                title: 'Testar',
+                title: 'Create new User',
                 type: 'postback',
-                payload: 'TEST-IA'
-            },
-            {
-                title: 'Vantagens',
-                type: 'postback',
-                payload: 'VANT-IA'
-            },
-            {
-                title: 'Desvantagens',
-                type: 'postback',
-                payload: 'DESV-IA'
+                payload: 'CREATE-USER'
             }
         ]
     },
     {
-        title: 'Expressão Regular',
+        title: 'PUT Methods',
         type: 'nested',
         call_to_actions: [
             {
-                title: 'Testar',
+                title: 'Update User',
                 type: 'postback',
-                payload: 'TEST-BER'
+                payload: 'UPDATE-USER'
             },
             {
-                title: 'Vantagens',
+                title: 'Mark User as Active',
                 type: 'postback',
-                payload: 'VANT-BER'
-            },
+                payload: 'MARK-USER-ACTIVE'
+            }
+        ]
+    },
+    {
+        title: 'DELETE Methods',
+        type: 'nested',
+        call_to_actions: [
             {
-                title: 'Desvantagens',
+                title: 'Delete User',
                 type: 'postback',
-                payload: 'DESV-BER'
+                payload: 'DELETE-USER'
             }
         ]
     }
 ]);
+
+
 bot.on('message', (payload, chat) => {
-    console.log(payload);
-    console.log(payload.message.nlp);
-    console.log(payload.message.nlp.entities);
-    console.log(chat);
     chat.getUserProfile().then((user) => {
-        defaultMessage(`Olha, ${user.first_name}, isso é um pouco vergonhoso mas eu prefiro me ater as opções no menu para não cometer nenhum erro...\nSabe como é né? É melhor assim, se não eu iria acabar roubando seu trabalho.\nAqui estão as opções em que posso te ajudar:`, chat);
+        defaultMessage(`Hey, ${user.first_name}, Could you please stick to the options I gave you? 😠 \n`, chat);
     });
 });
 bot.on('postback:START', (payload, chat) => {
     chat.getUserProfile().then((user) => {
-        defaultMessage(`Oi, ${user.first_name}. Será um prazer te ajudar você! Aqui estão os diferentes metodos utilizados:`, chat);
+        defaultMessage(`Hi, ${user.first_name}. I'm happy to test the user bundle with you, the available methods are:\n`, chat);
     });
 });
-bot.on('postback:TEST-FAQ', (payload, chat) => {
+
+bot.on('postback:DELETE-USER', (payload, chat) => {
     chat.conversation((convo) => {
-        testFaq(convo, 'Ótimo, então vamos começar. Qual é seu nome?');
+        testFaq(convo, 'Ooooh I love to delete other people account 👿, what is the ID of the account we are goign to delete today?');
     });
 });
+
 bot.on('postback:VANT-FAQ', (payload, chat) => {
     chat.say('Bem, a grande vantagem do sistema de perguntas e resposta é a simplicidade do mesmo, uma vez que usa o fluxo natural do chat para adquirir as respostas, ele não aumenta em nada o tempo de chat.');
 });
@@ -284,7 +287,7 @@ function testReg(convo, msg) {
                 let resp;
                 resp = splitSetence(payload.message.text);
 
-                let message = 'Telefone: ' +(resp.phone?resp.phone:'achei não ') + '\n Email: ' + (resp.email?resp.email:'achei não');
+                let message = 'Telefone: ' + (resp.phone ? resp.phone : 'achei não ') + '\n Email: ' + (resp.email ? resp.email : 'achei não');
                 convo.say(message);
                 testReg(convo, "Vamos denovo?");
             }
@@ -294,11 +297,11 @@ function testReg(convo, msg) {
 
 function splitSetence(text) {
     const myPhone = "meu telefone", youCanCallMeAt = "pode me ligar", myEmail = "meu email";
-    let  email, phone, aux1 = "",  index;
+    let email, phone, aux1 = "", index;
     text = text.toLowerCase();
     if (text.includes(myPhone)) {
         index = text.indexOf(myPhone);
-        console.log('Index: '+index);
+        console.log('Index: ' + index);
         if (index > 2) {
             if (text[index - 2] === "e" ||
                 text[index - 2] === "é") {
@@ -308,20 +311,20 @@ function splitSetence(text) {
         }
 
         index += myPhone.length;
-        if(text.length > index+1){
+        if (text.length > index + 1) {
             if (text[index + 1] === "e" ||
                 text[index + 1] === "é") {
                 aux1 = text.split(myPhone);
-                phone = validatePhone(aux1[1])?validatePhone(aux1[1]):phone;
+                phone = validatePhone(aux1[1]) ? validatePhone(aux1[1]) : phone;
             }
         }
     } else if (text.includes(youCanCallMeAt)) {
         index = text.indexOf(youCanCallMeAt) + youCanCallMeAt.length;
-        if(text.length > index+1){
+        if (text.length > index + 1) {
             if (text[index + 1] === "no" ||
                 text[index + 1] === "usando") {
                 aux1 = text.split(youCanCallMeAt);
-                phone = validatePhone(aux1[1])?validatePhone(aux1[1]):phone;
+                phone = validatePhone(aux1[1]) ? validatePhone(aux1[1]) : phone;
             }
         }
     }
@@ -335,34 +338,34 @@ function splitSetence(text) {
             }
         }
         index += myEmail.length;
-        if(text.length > index+1){
+        if (text.length > index + 1) {
             if (text[index + 1] === "e" ||
                 text[index + 1] === "é") {
                 aux1 = text.split(myEmail);
-                email = validateEmail(aux1[1])?validateEmail(aux1[1]):email;
+                email = validateEmail(aux1[1]) ? validateEmail(aux1[1]) : email;
             }
         }
     }
-    return {email:email, phone: phone};
+    return {email: email, phone: phone};
 }
 
 function validateEmail(text) {
     let aux = text.split(" ");
     let re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    for(let i =0, size = aux.length; i<size; i++){
-        if(aux[i].match(re))
+    for (let i = 0, size = aux.length; i < size; i++) {
+        if (aux[i].match(re))
             return aux[i];
     }
     return "";
 }
 
 function validatePhone(text) {
-    let result ='';
+    let result = '';
     let aux = text.split(" ");
     let re = /^[+() 0-9._]+$/ig;
-    for(let i =0, size = aux.length; i<size; i++){
-        if(aux[i].match(re))
-            result+= aux[i].match(re);
+    for (let i = 0, size = aux.length; i < size; i++) {
+        if (aux[i].match(re))
+            result += aux[i].match(re);
     }
     return result;
 }
