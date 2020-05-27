@@ -83,7 +83,7 @@ bot.on('postback:FIRST', (payload, chat) => {
             {
                 title: "Harumake",
                 subtitle: "Harumake slow cooked beef with wasabi\nPrice: $ 49.00",
-                image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/21690669_745706748887433_195117319125467136_n.jpg",
+                image_url: "https://unsplash.com/photos/fdlZBWIP0aM",
                 buttons: [
                     {
                         title: 'More details',
@@ -150,8 +150,8 @@ bot.on('postback:MAIN', (payload, chat) => {
                 ]
             },
             {
-                title: "Carbonara da Roça",
-                subtitle: "Massa de corte rústico, queijo Tulia de Amparo...\nPrice: $ 59.00",
+                title: "Carbonara Country side",
+                subtitle: "Special cut for the pasta and amaparo cheese...\nPrice: $ 59.00",
                 image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/20905682_128547464437893_2480580150173892608_n.jpg",
                 buttons: [
                     {
@@ -162,8 +162,8 @@ bot.on('postback:MAIN', (payload, chat) => {
                 ]
             },
             {
-                title: "Leitada",
-                subtitle: "Leitoa desossada e prensada, pele crocante, risoto de ...\nPrice: $ 79.00",
+                title: "Crunch pork",
+                subtitle: "Boneless pork with crunch skin ...\nPrice: $ 79.00",
                 image_url: "https://instagram.fplu3-1.fna.fbcdn.net/t51.2885-15/e35/21827056_117635038948942_7639582363755741184_n.jpg",
                 buttons: [
                     {
